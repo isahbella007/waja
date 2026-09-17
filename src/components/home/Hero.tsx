@@ -3,9 +3,9 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
-import Chip from "@mui/material/Chip";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import BoltIcon from "@mui/icons-material/Bolt";
+import { wajaColors } from "@/theme/theme";
 
 export default function Hero() {
   return (
@@ -15,34 +15,41 @@ export default function Hero() {
       sx={{
         position: "relative",
         overflow: "hidden",
-        background: "linear-gradient(135deg, #0891B2 0%, #0E7490 50%, #164E63 100%)",
+        backgroundColor: wajaColors.cardForeground,
+        // background: `linear-gradient(135deg, ${wajaColors.primary} 0%, ${wajaColors.primaryDark} 50%, ${wajaColors.foreground} 100%)`,
         color: "#FFFFFF",
         py: { xs: 10, md: 14 },
       }}
     >
-      <Box
+      {/* <Box
         aria-hidden
         sx={{
           position: "absolute",
           inset: 0,
           opacity: 0.18,
-          backgroundImage:
-            "radial-gradient(circle at 15% 15%, #FFFFFF 0, transparent 30%), radial-gradient(circle at 85% 70%, #EA580C 0, transparent 42%)",
+          backgroundImage: `radial-gradient(circle at 15% 15%, #FFFFFF 0, transparent 30%), radial-gradient(circle at 85% 70%, ${wajaColors.accent} 0, transparent 42%)`,
         }}
-      />
+      /> */}
       <Container maxWidth="lg" sx={{ position: "relative" }}>
         <Stack spacing={3} sx={{ maxWidth: 760 }}>
-          <Chip
-            icon={<BoltIcon sx={{ color: "#EA580C !important" }} />}
-            label="U.S. 501(c)(3) Nonprofit · Ghana & West Africa"
+          <Stack
+            direction="row"
+            spacing={1}
             sx={{
               alignSelf: "flex-start",
+              alignItems: "center",
               bgcolor: "rgba(255,255,255,0.12)",
-              color: "#FFFFFF",
-              fontWeight: 600,
               border: "1px solid rgba(255,255,255,0.3)",
+              borderRadius: "999px",
+              px: 1.5,
+              py: 0.5,
             }}
-          />
+          >
+            <BoltIcon sx={{ fontSize: 18, color: wajaColors.accent }} />
+            <Typography variant="body2" sx={{ color: "#FFFFFF", fontWeight: 600 }}>
+              U.S. 501(c)(3) Nonprofit · Ghana & West Africa
+            </Typography>
+          </Stack>
           <Typography
             component="h1"
             variant="h2"
@@ -55,8 +62,7 @@ export default function Hero() {
             Empowering Women to Drive the Future of Mobility in Ghana.
           </Typography>
           <Typography variant="h6" sx={{ fontWeight: 500, color: "#A5F3FC" }}>
-            The future of automotive work is changing. Being a woman or orphan should
-            never be a barrier to opportunity.
+            Hands-on automotive, diagnostics and EV training, plus business and life skills, so women and orphans can build lasting economic independence
           </Typography>
           {/* <Typography variant="body1" sx={{ fontSize: "1.1rem", color: "rgba(255,255,255,0.92)" }}>
             WAJA empowers women and orphans in Ghana through automotive technology

@@ -8,6 +8,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SectionContainer from "./SectionContainer";
+import { wajaColors } from "@/theme/theme";
 
 const ACTIVITY = [
   {
@@ -66,7 +67,7 @@ export default function ActivityFeed() {
                 aria-hidden
                 sx={{
                   height: 160,
-                  background: "linear-gradient(135deg, #22D3EE 0%, #0891B2 100%)",
+                  background: `linear-gradient(135deg, ${wajaColors.secondary} 0%, ${wajaColors.primary} 100%)`,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",

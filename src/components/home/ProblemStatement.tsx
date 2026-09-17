@@ -4,7 +4,7 @@ import SectionContainer from "./SectionContainer";
 
 export default function ProblemStatement() {
   return (
-    <SectionContainer bgcolor="#ECFEFF" py={{ xs: 8, md: 10 }}>
+    <SectionContainer py={{ xs: 8, md: 10 }}>
       <Stack spacing={3} sx={{ maxWidth: 820, mx: "auto", textAlign: "center" }}>
         <Typography
           component="p"

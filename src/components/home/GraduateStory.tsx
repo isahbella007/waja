@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SectionContainer from "./SectionContainer";
+import { wajaColors } from "@/theme/theme";
 
 export default function GraduateStory() {
   return (
@@ -18,7 +19,7 @@ export default function GraduateStory() {
               width: "100%",
               aspectRatio: "4 / 5",
               borderRadius: 3,
-              background: "linear-gradient(135deg, #0891B2 0%, #EA580C 100%)",
+              background: `linear-gradient(135deg, ${wajaColors.primary} 0%, ${wajaColors.accent} 100%)`,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

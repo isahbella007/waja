@@ -8,11 +8,11 @@ import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import GroupsIcon from "@mui/icons-material/Groups";
-import InsightsIcon from "@mui/icons-material/Insights";
 import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import InfoIcon from "@mui/icons-material/Info";
 import { visuallyHidden } from "@mui/utils";
+import { wajaColors } from "@/theme/theme";
 
 const PATHWAYS = [
   {
@@ -21,25 +21,16 @@ const PATHWAYS = [
     description: "Stories from graduates",
     href: "#graduate-story",
     buttonText: "Meet them",
-    iconBg: "#ECFEFF",
+    iconBg: wajaColors.background,
     iconColor: "primary.main",
   },
-  // {
-  //   icon: InsightsIcon,
-  //   title: "See Our Impact",
-  //   description: "Results and reports",
-  //   href: "#impact",
-  //   buttonText: "View impact",
-  //   iconBg: "#ECFEFF",
-  //   iconColor: "primary.main",
-  // },
   {
     icon: VolunteerActivismIcon,
     title: "Invest in Her",
     description: "Fund a trainee",
     href: "#donate",
     buttonText: "Support",
-    iconBg: "#ECFEFF",
+    iconBg: wajaColors.background,
     iconColor: "primary.main",
   },
   {
@@ -48,7 +39,7 @@ const PATHWAYS = [
     description: "Applications open",
     href: "#programs",
     buttonText: "Apply now",
-    iconBg: "#ECFEFF",
+    iconBg: wajaColors.background,
     iconColor: "primary.main",
   },
   {

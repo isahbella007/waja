@@ -7,6 +7,7 @@ import DescriptionIcon from "@mui/icons-material/Description";
 import TrackChangesIcon from "@mui/icons-material/TrackChanges";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import SectionContainer from "./SectionContainer";
+import { wajaColors } from "@/theme/theme";
 
 const GOALS = [
   { value: "85%", label: "of our graduates will secure employment or paid apprenticeships after completing the program." },
@@ -45,7 +46,7 @@ function StatGroup({
         component="p"
         variant="overline"
         align="center"
-        sx={{ display: "block", letterSpacing: 2, fontWeight: 600, color: "#22D3EE", mb: 2 }}
+        sx={{ display: "block", letterSpacing: 2, fontWeight: 600, color: wajaColors.secondary, mb: 2 }}
       >
         {eyebrow}
       </Typography>
@@ -69,9 +70,9 @@ function StatGroup({
 
 export default function ImpactNumbers() {
   return (
-    <SectionContainer id="impact" py={{ xs: 10, md: 12 }} bgcolor="#164E63">
+    <SectionContainer id="impact" py={{ xs: 10, md: 12 }} bgcolor={wajaColors.foreground}>
       <Stack spacing={1} sx={{ mb: { xs: 6, md: 8 }, textAlign: "center", color: "#FFFFFF" }}>
-        <Typography component="p" variant="overline" sx={{ letterSpacing: 2, fontWeight: 600, color: "#22D3EE" }}>
+        <Typography component="p" variant="overline" sx={{ letterSpacing: 2, fontWeight: 600, color: wajaColors.secondary }}>
           Our Impact
         </Typography>
         <Typography component="h2" variant="h4" sx={{ fontWeight: 700 }}>
@@ -92,7 +93,7 @@ export default function ImpactNumbers() {
           eyebrow="Our Achievements"
           title="Our current achievements"
           stats={ACHIEVEMENTS}
-          valueColor="#22D3EE"
+          valueColor={wajaColors.secondary}
         />
       </Stack>
 

@@ -7,6 +7,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import SectionContainer from "./SectionContainer";
+import { wajaColors } from "@/theme/theme";
 
 export default function EmailSignup() {
   const [email, setEmail] = React.useState("");
@@ -23,12 +24,12 @@ export default function EmailSignup() {
   }
 
   return (
-    <SectionContainer bgcolor="#164E63" py={{ xs: 8, md: 10 }}>
-      <Stack spacing={3} sx={{ maxWidth: 560, mx: "auto", textAlign: "center", color: "#FFFFFF" }}>
-        <Typography component="h2" variant="h5" sx={{ fontWeight: 700 }}>
+    <SectionContainer py={{ xs: 8, md: 10 }}>
+      <Stack spacing={3} sx={{ maxWidth: 560, mx: "auto", textAlign: "center" }}>
+        <Typography component="h2" variant="h5" sx={{ fontWeight: 700, color: "text.primary" }}>
           Stay in the loop
         </Typography>
-        <Typography variant="body1" sx={{ color: "rgba(255,255,255,0.85)" }}>
+        <Typography variant="body1" color="text.secondary">
           [Placeholder] Get program updates, graduate stories, and volunteer opportunities —
           about once a month, never spam.
         </Typography>
@@ -52,7 +53,7 @@ export default function EmailSignup() {
             required
             fullWidth
             variant="filled"
-            sx={{ bgcolor: "#FFFFFF", borderRadius: 1 }}
+            sx={{ bgcolor: wajaColors.card, borderRadius: 1 }}
             error={status === "error"}
             helperText={status === "error" ? "Enter a valid email address." : " "}
           />

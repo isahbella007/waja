@@ -3,6 +3,7 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Box from "@mui/material/Box";
 import SectionContainer from "./SectionContainer";
+import { wajaColors } from "@/theme/theme";
 
 const PARTNERS = [
   "[Placeholder] Partner Co.",
@@ -15,7 +16,7 @@ const PARTNERS = [
 
 export default function SupportersPartners() {
   return (
-    <SectionContainer id="partners" bgcolor="#ECFEFF">
+    <SectionContainer id="partners"  pb={{ xs: 4, md: 4 }}>
       <Stack spacing={1} sx={{ mb: { xs: 4, md: 6 }, textAlign: "center" }}>
         <Typography
           component="p"
@@ -42,7 +43,7 @@ export default function SupportersPartners() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                bgcolor: "#FFFFFF",
+                bgcolor: wajaColors.card,
                 border: "1px solid",
                 borderColor: "divider",
                 borderRadius: 2,

@@ -34,19 +34,54 @@ const QUICK_LINKS = [
   { label: "Get Involved", href: "#get-involved" },
 ];
 
+const VANITY_DIGITS: Record<string, string> = {
+  A: "2", B: "2", C: "2", D: "3", E: "3", F: "3", G: "4", H: "4", I: "4",
+  J: "5", K: "5", L: "5", M: "6", N: "6", O: "6", P: "7", Q: "7", R: "7", S: "7",
+  T: "8", U: "8", V: "8", W: "9", X: "9", Y: "9", Z: "9",
+};
+
+function toTelHref(phone: string) {
+  const chars = phone.replace(/[^0-9A-Za-z+]/g, "").split("");
+  const digits = chars.map((c) => (c === "+" ? c : VANITY_DIGITS[c.toUpperCase()] ?? c)).join("");
+  return `tel:${digits}`;
+}
+
+const OFFICES = [
+  {
+    title: "Headquarters",
+    location: "Washington DC, US",
+    phone: "(800) 237-WAJA",
+    email: "info@gowaja.org",
+    address: "2812 Georgia Avenue NW, Washington, DC 20001",
+  },
+  {
+    title: "GH",
+    location: "Accra, Ghana",
+    phone: "+233 (0) 302 54 WAJA",
+    email: "info@gowaja.org",
+    address: "HQ3M+MXC, Graphic Rd, Accra, Ghana",
+  },
+];
+
+const FOOTER_LINK_SX = {
+  color: "inherit",
+  textDecoration: "none",
+  cursor: "pointer",
+  "&:hover": { color: "#FFFFFF" },
+  "&:focus-visible": { outline: "2px solid #FFFFFF", outlineOffset: 2 },
+};
+
 export default function Footer() {
   return (
-    <Box component="footer" sx={{ bgcolor: "#0F172A", color: "rgba(255,255,255,0.85)", pt: { xs: 8, md: 10 }, pb: 4 }}>
+    <Box component="footer" sx={{ bgcolor: "#164E63", color: "rgba(255,255,255,0.85)", pt: { xs: 8, md: 10 }, pb: 4 }}>
       <Container maxWidth="lg">
         <Grid container spacing={6}>
-          <Grid size={{ xs: 12, md: 4 }}>
+          <Grid size={{ xs: 12, md: 3 }}>
             <Typography variant="h5" sx={{ fontWeight: 700, color: "#FFFFFF", mb: 2 }}>
               WAJA
             </Typography>
             <Typography variant="body2" sx={{ mb: 3, maxWidth: 320 }}>
-              WAJA empowers women and orphans in Ghana through automotive technology
-              training, digital diagnostics, and EV readiness — building lasting
-              economic independence.
+              Automotive and business training for women in Ghana.
             </Typography>
             <Stack direction="row" spacing={1}>
               {SOCIALS.map((social) => {
@@ -69,82 +104,62 @@ export default function Footer() {
             </Stack>
           </Grid>
 
-          <Grid size={{ xs: 6, md: 2 }}>
-            <Typography variant="subtitle2" sx={{ fontWeight: 700, color: "#FFFFFF", mb: 2 }}>
-              Explore
-            </Typography>
-            <Stack spacing={1.25}>
-              {QUICK_LINKS.map((link) => (
-                <Typography
-                  key={link.href}
-                  component="a"
-                  href={link.href}
-                  variant="body2"
-                  sx={{
-                    color: "inherit",
-                    textDecoration: "none",
-                    cursor: "pointer",
-                    "&:hover": { color: "#FFFFFF" },
-                    "&:focus-visible": { outline: "2px solid #FFFFFF", outlineOffset: 2 },
-                  }}
-                >
-                  {link.label}
-                </Typography>
-              ))}
-            </Stack>
-          </Grid>
-
-          <Grid size={{ xs: 6, md: 3 }}>
-            <Typography variant="subtitle2" sx={{ fontWeight: 700, color: "#FFFFFF", mb: 2 }}>
-              Policies
-            </Typography>
-            <Stack spacing={1.25}>
-              {POLICY_LINKS.map((link) => (
-                <Typography
-                  key={link.label}
-                  component="a"
-                  href={link.href}
-                  variant="body2"
-                  sx={{
-                    color: "inherit",
-                    textDecoration: "none",
-                    cursor: "pointer",
-                    "&:hover": { color: "#FFFFFF" },
-                    "&:focus-visible": { outline: "2px solid #FFFFFF", outlineOffset: 2 },
-                  }}
-                >
-                  {link.label}
-                </Typography>
-              ))}
-            </Stack>
-          </Grid>
+          {OFFICES.map((office) => (
+            <Grid key={office.title} size={{ xs: 6, md: 3 }}>
+              <Typography variant="subtitle2" sx={{ fontWeight: 700, color: "#FFFFFF", mb: 0.5 }}>
+                {office.title}
+              </Typography>
+              <Typography variant="caption" sx={{ display: "block", color: "rgba(255,255,255,0.55)", mb: 1.5 }}>
+                {office.location}
+              </Typography>
+              <Stack spacing={1.25}>
+                <Stack direction="row" spacing={1.5} sx={{ alignItems: "flex-start" }}>
+                  <LocationOnIcon fontSize="small" sx={{ mt: 0.3, flexShrink: 0 }} />
+                  <Typography variant="body2">{office.address}</Typography>
+                </Stack>
+                <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
+                  <PhoneIcon fontSize="small" sx={{ flexShrink: 0 }} />
+                  <Typography component="a" href={toTelHref(office.phone)} variant="body2" sx={{ color: "inherit", textDecoration: "none" }}>
+                    {office.phone}
+                  </Typography>
+                </Stack>
+                <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
+                  <EmailIcon fontSize="small" sx={{ flexShrink: 0 }} />
+                  <Typography component="a" href={`mailto:${office.email}`} variant="body2" sx={{ color: "inherit", textDecoration: "none" }}>
+                    {office.email}
+                  </Typography>
+                </Stack>
+              </Stack>
+            </Grid>
+          ))}
 
           <Grid size={{ xs: 12, md: 3 }}>
-            <Typography variant="subtitle2" sx={{ fontWeight: 700, color: "#FFFFFF", mb: 2 }}>
-              Contact
-            </Typography>
-            <Stack spacing={1.5}>
-              <Stack direction="row" spacing={1.5} sx={{ alignItems: "flex-start" }}>
-                <LocationOnIcon fontSize="small" sx={{ mt: 0.3 }} />
-                <Typography variant="body2">
-                  [Placeholder Address]
-                  <br />
-                  [City, State ZIP]
+            <Grid container spacing={3}>
+              <Grid size={6}>
+                <Typography variant="subtitle2" sx={{ fontWeight: 700, color: "#FFFFFF", mb: 2 }}>
+                  Explore
                 </Typography>
-              </Stack>
-              <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
-                <PhoneIcon fontSize="small" />
-                <Typography component="a" href="tel:+10000000000" variant="body2" sx={{ color: "inherit", textDecoration: "none" }}>
-                  [Placeholder Phone]
+                <Stack spacing={1.25}>
+                  {QUICK_LINKS.map((link) => (
+                    <Typography key={link.href} component="a" href={link.href} variant="body2" sx={FOOTER_LINK_SX}>
+                      {link.label}
+                    </Typography>
+                  ))}
+                </Stack>
+              </Grid>
+              <Grid size={6}>
+                <Typography variant="subtitle2" sx={{ fontWeight: 700, color: "#FFFFFF", mb: 2 }}>
+                  Policies
                 </Typography>
-              </Stack>
-              <Stack direction="row" spacing={1.5} sx={{ alignItems: "center" }}>
-                <EmailIcon fontSize="small" />
-                <Typography component="a" href="mailto:info@example.org" variant="body2" sx={{ color: "inherit", textDecoration: "none" }}>
-                  [Placeholder Email]
-                </Typography>
-              </Stack>
-            </Stack>
+                <Stack spacing={1.25}>
+                  {POLICY_LINKS.map((link) => (
+                    <Typography key={link.label} component="a" href={link.href} variant="body2" sx={FOOTER_LINK_SX}>
+                      {link.label}
+                    </Typography>
+                  ))}
+                </Stack>
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
 
