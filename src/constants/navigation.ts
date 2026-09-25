@@ -26,6 +26,18 @@ export const PROGRAMS_NAV: NavItem = {
   ],
 };
 
+export const GET_INVOLVED_NAV: NavItem = {
+  label: "Get Involved",
+  href: "/get-involved",
+  children: [
+    { label: "Overview", href: "/get-involved/overview" },
+    { label: "Give", href: "/get-involved/give" },
+    { label: "Partner with us", href: "/get-involved/partner" },
+    { label: "Volunteer", href: "/get-involved/volunteer" },
+    { label: "Events & sponsorship", href: "/get-involved/events" },
+  ],
+};
+
 // Shown on the right of the Programs sub-nav
 export const PROGRAMS_SUBNAV_ACTION: ActionLink = { label: "Apply", href: APPLY_HREF };
 
@@ -34,7 +46,7 @@ export const NAV_LINKS: NavItem[] = [
   PROGRAMS_NAV,
   { label: "Our Story", href: "/#graduate-story" },
   { label: "Impact", href: "/#impact" },
-  { label: "Get Involved", href: "/#get-involved" },
+  GET_INVOLVED_NAV,
 ];
 
 export const DONATE_LINK: CtaLink = { label: "Donate", href: "/#donate" };

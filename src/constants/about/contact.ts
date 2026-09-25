@@ -61,6 +61,8 @@ export const CONTACT_PAGE: ContactPageContent = {
       { value: "volunteer", label: "Volunteering" },
       { value: "advisory-board", label: "Joining the advisory board" },
       { value: "donation", label: "A question about donations" },
+      { value: "major-gift", label: "Major gifts and pledges" },
+      { value: "in-kind", label: "Donating equipment or supplies" },
       { value: "other", label: "Something else" },
     ],
     submitLabel: "Send message",
