@@ -1,6 +1,8 @@
 "use client";
 
 import * as React from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Box from "@mui/material/Box";
@@ -15,17 +17,18 @@ import Container from "@mui/material/Container";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { DONATE_LINK, NAV_LINKS } from "@/constants/navigation";
 
-const NAV_LINKS = [
-  { label: "Programs", href: "#programs" },
-  { label: "Our Story", href: "#graduate-story" },
-  { label: "Impact", href: "#impact" },
-  { label: "Get Involved", href: "#get-involved" },
-];
+function isActive(pathname: string, href: string) {
+  // Home-page anchors ("/#programs") are never "active" pages
+  if (href.includes("#")) return false;
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
+  const pathname = usePathname();
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -54,8 +57,8 @@ export default function Navbar() {
         <Container maxWidth="lg">
           <Toolbar disableGutters sx={{ py: 1, gap: 2 }}>
             <Typography
-              component="a"
-              href="#main-content"
+              component={Link}
+              href="/"
               variant="h5"
               sx={{
                 fontWeight: 700,
@@ -69,39 +72,44 @@ export default function Navbar() {
             </Typography>
 
             <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 3 }}>
-              {NAV_LINKS.map((link) => (
-                <Typography
-                  key={link.href}
-                  component="a"
-                  href={link.href}
-                  variant="body1"
-                  sx={{
-                    color: "text.primary",
-                    fontWeight: 500,
-                    textDecoration: "none",
-                    cursor: "pointer",
-                    "&:hover": { color: "primary.main" },
-                    "&:focus-visible": {
-                      outline: "3px solid",
-                      outlineColor: "primary.main",
-                      outlineOffset: 2,
-                      borderRadius: "4px",
-                    },
-                  }}
-                >
-                  {link.label}
-                </Typography>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const active = isActive(pathname, link.href);
+                return (
+                  <Typography
+                    key={link.href}
+                    component={Link}
+                    href={link.href}
+                    aria-current={active ? "page" : undefined}
+                    variant="body1"
+                    sx={{
+                      color: active ? "primary.main" : "text.primary",
+                      fontWeight: active ? 600 : 500,
+                      textDecoration: "none",
+                      cursor: "pointer",
+                      "&:hover": { color: "primary.main" },
+                      "&:focus-visible": {
+                        outline: "3px solid",
+                        outlineColor: "primary.main",
+                        outlineOffset: 2,
+                        borderRadius: "4px",
+                      },
+                    }}
+                  >
+                    {link.label}
+                  </Typography>
+                );
+              })}
               <Button
                 variant="contained"
-                href="#donate"
+                component={Link}
+                href={DONATE_LINK.href}
                 startIcon={<FavoriteIcon />}
                 sx={{
                   bgcolor: "warning.main",
                   "&:hover": { bgcolor: "warning.dark" },
                 }}
               >
-                Donate
+                {DONATE_LINK.label}
               </Button>
             </Box>
 
@@ -125,7 +133,12 @@ export default function Navbar() {
           </Box>
           {NAV_LINKS.map((link) => (
             <List key={link.href} disablePadding>
-              <ListItemButton component="a" href={link.href} onClick={() => setMobileOpen(false)}>
+              <ListItemButton
+                component={Link}
+                href={link.href}
+                selected={isActive(pathname, link.href)}
+                onClick={() => setMobileOpen(false)}
+              >
                 <ListItemText primary={link.label} />
               </ListItemButton>
             </List>
@@ -134,12 +147,13 @@ export default function Navbar() {
             <Button
               fullWidth
               variant="contained"
-              href="#donate"
+              component={Link}
+              href={DONATE_LINK.href}
               onClick={() => setMobileOpen(false)}
               startIcon={<FavoriteIcon />}
               sx={{ bgcolor: "warning.main", "&:hover": { bgcolor: "warning.dark" } }}
             >
-              Donate
+              {DONATE_LINK.label}
             </Button>
           </Box>
         </Box>
