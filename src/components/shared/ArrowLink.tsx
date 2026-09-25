@@ -18,7 +18,7 @@ export default function ArrowLink({ label, href, color = wajaColors.primaryDark 
         alignItems: "center",
         gap: 0.5,
         color,
-        fontFamily: "var(--font-heading), sans-serif",
+        fontFamily: "var(--font-body), sans-serif",
         fontWeight: 600,
         textDecoration: "none",
         borderRadius: "4px",

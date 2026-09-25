@@ -173,7 +173,7 @@ export default function TeamSlider({
                   sx={{
                     alignSelf: "flex-start",
                     gap: 0.5,
-                    fontFamily: "var(--font-heading), sans-serif",
+                    fontFamily: "var(--font-body), sans-serif",
                     fontSize: "0.875rem",
                     fontWeight: 600,
                     color: wajaColors.foreground,

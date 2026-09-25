@@ -7,14 +7,9 @@ import Typography from "@mui/material/Typography";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import SectionTitle from "@/components/shared/SectionTitle";
 import { wajaColors } from "@/theme/theme";
+import { getProgramTheme } from "@/theme/programThemes";
 import type { ProgramsOverviewContent } from "@/constants/programs/overview";
-
-// Panel colours in program order: light, dark, orange. Repeats if more programs are added.
-const PANEL_THEMES = [
-  { bg: "#FFFFFF", text: wajaColors.foreground, muted: wajaColors.mutedForeground, rule: "rgba(22,78,99,0.35)" },
-  { bg: wajaColors.foreground, text: "#FFFFFF", muted: wajaColors.border, rule: "rgba(255,255,255,0.35)" },
-  { bg: "#FDBA74", text: "#431407", muted: "#7C2D12", rule: "rgba(67,20,7,0.35)" },
-];
+import type { Program } from "@/constants/programs/programs";
 
 const VISUALLY_HIDDEN = {
   position: "absolute",
@@ -25,7 +20,13 @@ const VISUALLY_HIDDEN = {
   whiteSpace: "nowrap",
 } as const;
 
-export default function ProgramPathway({ eyebrow, steps, programs, ...heading }: ProgramsOverviewContent["pathway"]) {
+export default function ProgramPathway({
+  eyebrow,
+  steps,
+  programs,
+  openLabel,
+  ...heading
+}: ProgramsOverviewContent["pathway"] & { programs: Program[]; openLabel: string }) {
   return (
     <Stack spacing={{ xs: 4, md: 5 }}>
       <Box>
@@ -60,7 +61,12 @@ export default function ProgramPathway({ eyebrow, steps, programs, ...heading }:
             <Box
               component="li"
               key={step}
-              sx={{ color: wajaColors.foreground, fontSize: { xs: "1rem", md: "1.15rem" }, fontWeight: 500 }}
+              sx={{
+                color: wajaColors.foreground,
+                fontFamily: "var(--font-heading), Georgia, serif",
+                fontSize: { xs: "1rem", md: "1.2rem" },
+                fontWeight: 400,
+              }}
             >
               {step}
             </Box>
@@ -90,19 +96,19 @@ export default function ProgramPathway({ eyebrow, steps, programs, ...heading }:
         }}
       >
         {programs.map((program, index) => {
-          const theme = PANEL_THEMES[index % PANEL_THEMES.length];
+          const theme = getProgramTheme(index);
           return (
             <Box
               component="li"
-              key={program.id}
+              key={program.slug}
               sx={{
                 position: "relative",
                 flex: { xs: "0 0 85%", sm: "0 0 55%" },
                 scrollSnapAlign: "start",
                 display: "flex",
                 flexDirection: "column",
-                bgcolor: theme.bg,
-                color: theme.text,
+                bgcolor: theme.surface,
+                color: theme.onSurface,
                 p: { xs: 3, md: 3.5 },
                 boxShadow: "0 10px 25px rgba(22,78,99,0.12)",
                 transition: "transform 200ms ease, box-shadow 200ms ease",
@@ -118,11 +124,11 @@ export default function ProgramPathway({ eyebrow, steps, programs, ...heading }:
                 component="p"
                 aria-hidden
                 sx={{
-                  fontFamily: "var(--font-heading), sans-serif",
+                  fontFamily: "var(--font-heading), Georgia, serif",
                   fontWeight: 400,
                   fontSize: { xs: "3rem", md: "3.75rem" },
                   lineHeight: 1.05,
-                  color: theme.text,
+                  color: theme.onSurface,
                   pb: 2.5,
                   mb: 2.5,
                   borderBottom: "1px solid",
@@ -134,15 +140,15 @@ export default function ProgramPathway({ eyebrow, steps, programs, ...heading }:
               <Typography
                 variant="h6"
                 component="h3"
-                sx={{ color: theme.text, fontWeight: 700, lineHeight: 1.3, mb: 1 }}
+                sx={{ color: theme.onSurface, fontWeight: 700, lineHeight: 1.3, mb: 1 }}
               >
                 {program.title}
               </Typography>
-              <Typography variant="body2" sx={{ color: theme.text, fontWeight: 600, mb: 1 }}>
+              <Typography variant="body2" sx={{ color: theme.onSurface, fontWeight: 600, mb: 1 }}>
                 {program.subtitle}
               </Typography>
               <Typography variant="body2" sx={{ color: theme.muted, mb: 3, flexGrow: 1 }}>
-                {program.description}
+                {program.summary}
               </Typography>
               <Stack
                 direction="row"
@@ -154,18 +160,19 @@ export default function ProgramPathway({ eyebrow, steps, programs, ...heading }:
                   borderColor: theme.rule,
                 }}
               >
-                <Typography variant="caption" sx={{ color: theme.text, fontWeight: 600 }}>
+                <Typography variant="caption" sx={{ color: theme.onSurface, fontWeight: 600 }}>
                   {program.tag}
                 </Typography>
                 <Typography
                   component={Link}
-                  href={program.link.href}
+                  href={`/programs/${program.slug}`}
+                  transitionTypes={["page-open"]}
                   variant="caption"
                   sx={{
                     display: "inline-flex",
                     alignItems: "center",
                     gap: 0.5,
-                    color: theme.text,
+                    color: theme.onSurface,
                     fontWeight: 700,
                     textDecoration: "none",
                     "&:focus-visible": { outline: "none" },
@@ -173,7 +180,7 @@ export default function ProgramPathway({ eyebrow, steps, programs, ...heading }:
                     "&::after": { content: '""', position: "absolute", inset: 0 },
                   }}
                 >
-                  {program.link.label}
+                  {openLabel}
                   <Box component="span" sx={VISUALLY_HIDDEN}>
                     {`: ${program.title}`}
                   </Box>

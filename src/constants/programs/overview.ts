@@ -1,22 +1,8 @@
 import { APPLY_HREF } from "../navigation";
-import type { ActionLink, CtaBannerContent, CtaLink, ImageContent, SectionHeading } from "../types";
+import type { ActionLink, CtaBannerContent, ImageContent, SectionHeading } from "../types";
 
 // Icon names map to MUI icons in the component, so content stays plain data
 export type SkillIcon = "diagnostics" | "ai" | "ev" | "electrical" | "records" | "operations";
-
-export type ProgramSummary = {
-  id: string;
-  // Small label above the number, e.g. "Program"
-  label: string;
-  // Large word on the panel, e.g. "One"
-  number: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  // Short theme shown at the bottom of the panel
-  tag: string;
-  link: CtaLink;
-};
 
 export type ProgramsOverviewContent = {
   seo: { title: string; description: string };
@@ -28,7 +14,8 @@ export type ProgramsOverviewContent = {
   };
   skills: SectionHeading & { items: { icon: SkillIcon; title: string; description: string }[] };
   whyTechnology: { eyebrow: string; title: string; paragraphs: string[]; highlight: string };
-  pathway: SectionHeading & { steps: string[]; programs: ProgramSummary[] };
+  // The program panels themselves come from PROGRAMS in ./programs
+  pathway: SectionHeading & { steps: string[] };
   cta: CtaBannerContent;
 };
 
@@ -102,40 +89,6 @@ export const PROGRAMS_OVERVIEW: ProgramsOverviewContent = {
     eyebrow: "Integrated empowerment pathway",
     title: "Three programs that build on each other.",
     steps: ["Recruit", "Train", "Certify", "Employ", "Launch", "Lead"],
-    programs: [
-      {
-        id: "automotive-skills",
-        label: "Program",
-        number: "One",
-        title: "Women in Automotive Skills & Certification",
-        subtitle: "Flagship 16-month cohort training",
-        description:
-          "Equipping underserved women and orphans with high-demand mechanical skills that lead directly to employment and entrepreneurship.",
-        tag: "Technical mastery",
-        link: { label: "Open", href: "/programs/automotive-skills" },
-      },
-      {
-        id: "microenterprise",
-        label: "Program",
-        number: "Two",
-        title: "Women's Microenterprise & Market Linkage Accelerator",
-        subtitle: "Post-training business launch program",
-        description: "Ensuring graduates move from skills to sustainable income.",
-        tag: "Income & entrepreneurship",
-        link: { label: "Open", href: "/programs/microenterprise" },
-      },
-      {
-        id: "life-skills-leadership",
-        label: "Program",
-        number: "Three",
-        title: "Life Skills, Leadership & Workforce Readiness",
-        subtitle: "Foundational and wraparound support program",
-        description:
-          "Building confidence, numeracy, safety awareness and leadership capacity that supports long-term economic success.",
-        tag: "Leadership & sustainability",
-        link: { label: "Open", href: "/programs/life-skills-leadership" },
-      },
-    ],
   },
   cta: {
     title: "Ready to train with us?",

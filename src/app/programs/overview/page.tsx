@@ -8,6 +8,7 @@ import WhyTechnology from "@/components/programs/overview/WhyTechnology";
 import ProgramPathway from "@/components/programs/overview/ProgramPathway";
 import CtaBanner from "@/components/shared/CtaBanner";
 import { PROGRAMS_OVERVIEW } from "@/constants/programs/overview";
+import { PROGRAM_PAGE_LABELS, PROGRAMS } from "@/constants/programs/programs";
 
 export const metadata: Metadata = {
   title: PROGRAMS_OVERVIEW.seo.title,
@@ -35,7 +36,7 @@ export default function ProgramsOverviewPage() {
       <Container maxWidth="lg" sx={{ py: SECTION_PY }}>
         <Stack spacing={SECTION_GAP}>
           <Box id="pathway" sx={{ scrollMarginTop: "96px" }}>
-            <ProgramPathway {...content.pathway} />
+            <ProgramPathway {...content.pathway} programs={PROGRAMS} openLabel={PROGRAM_PAGE_LABELS.openLabel} />
           </Box>
           <CtaBanner {...content.cta} buttonTone="accent" />
         </Stack>

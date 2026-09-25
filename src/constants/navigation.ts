@@ -1,8 +1,8 @@
 import type { ActionLink, CtaLink, NavItem } from "./types";
 
-// Where every "Apply" button goes. Undefined until the application page is
-// built: the buttons still show but don't navigate. Set it once here to switch them all on.
-export const APPLY_HREF: string | undefined = undefined;
+// Where every general "Apply" button goes: the Apply information page.
+// (Set to undefined to make the buttons show without navigating.)
+export const APPLY_HREF: string | undefined = "/apply";
 
 export const ABOUT_NAV: NavItem = {
   label: "About",

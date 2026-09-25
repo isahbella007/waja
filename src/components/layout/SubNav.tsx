@@ -20,7 +20,7 @@ const ACTION_SX = {
   cursor: "pointer",
   whiteSpace: "nowrap",
   textDecoration: "none",
-  fontFamily: "var(--font-heading), sans-serif",
+  fontFamily: "var(--font-body), sans-serif",
   fontWeight: 600,
   color: wajaColors.primaryDark,
   "&:hover": { color: wajaColors.primary },

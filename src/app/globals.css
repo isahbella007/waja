@@ -31,3 +31,124 @@ html {
 .skip-link:focus {
   left: 0;
 }
+
+/* ---------- Program leaflet page transitions (see app/programs/[slug]/page.tsx) ---------- */
+
+/* Navbar stays on top and still while pages animate beneath it */
+::view-transition-group(site-navbar) {
+  z-index: 10;
+  animation: none;
+}
+
+/* Page turn: the old leaf swings away around its left edge, above the new one.
+   Origin is bottom-left because "Turn the page" sits at the foot of the leaflet,
+   so that corner is on screen when the turn starts. */
+::view-transition-group(.page-out) {
+  z-index: 3;
+}
+::view-transition-group(.page-in) {
+  z-index: 2;
+}
+::view-transition-old(.page-out) {
+  transform-origin: 0% 100%;
+  animation: page-turn-away 700ms cubic-bezier(0.55, 0, 0.35, 1) both;
+}
+::view-transition-new(.page-in) {
+  animation: page-turn-reveal 700ms ease-out both;
+}
+
+@keyframes page-turn-away {
+  0% {
+    transform: perspective(2400px) rotateY(0deg);
+    filter: brightness(1) drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+    opacity: 1;
+  }
+  60% {
+    filter: brightness(0.92) drop-shadow(-30px 0 40px rgba(0, 0, 0, 0.25));
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(2400px) rotateY(-95deg);
+    filter: brightness(0.8) drop-shadow(-40px 0 50px rgba(0, 0, 0, 0.3));
+    opacity: 0;
+  }
+}
+
+/* The next leaf starts in the turning page's shadow and brightens */
+@keyframes page-turn-reveal {
+  from {
+    filter: brightness(0.82);
+    transform: scale(0.99);
+  }
+  to {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+}
+
+/* Opening a leaflet from the Overview: it swings in from the right edge */
+::view-transition-new(.page-open) {
+  transform-origin: 100% 0%;
+  animation: page-open-in 550ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
+}
+
+@keyframes page-open-in {
+  from {
+    transform: perspective(2400px) rotateY(-18deg) translateX(40px);
+    opacity: 0;
+  }
+  to {
+    transform: perspective(2400px) rotateY(0deg) translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Going back: the previous leaf swings back in over the current one.
+   Origin is top-left because the page scrolls to the top on arrival. */
+::view-transition-group(.page-over) {
+  z-index: 3;
+}
+::view-transition-group(.page-under) {
+  z-index: 2;
+}
+::view-transition-new(.page-over) {
+  transform-origin: 0% 0%;
+  animation: page-turn-back 700ms cubic-bezier(0.55, 0, 0.35, 1) both;
+}
+::view-transition-old(.page-under) {
+  animation: page-shade 700ms ease-in both;
+}
+
+@keyframes page-turn-back {
+  0% {
+    transform: perspective(2400px) rotateY(-95deg);
+    filter: brightness(0.8) drop-shadow(-40px 0 50px rgba(0, 0, 0, 0.3));
+    opacity: 0;
+  }
+  40% {
+    filter: brightness(0.92) drop-shadow(-30px 0 40px rgba(0, 0, 0, 0.25));
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(2400px) rotateY(0deg);
+    filter: brightness(1) drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+    opacity: 1;
+  }
+}
+
+/* The page being covered falls into shadow */
+@keyframes page-shade {
+  to {
+    filter: brightness(0.82);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(.page-out),
+  ::view-transition-new(.page-in),
+  ::view-transition-new(.page-open),
+  ::view-transition-new(.page-over),
+  ::view-transition-old(.page-under) {
+    animation: none;
+  }
+}

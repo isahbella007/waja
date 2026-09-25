@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
-import { Lexend, Source_Sans_3 } from "next/font/google";
+import { Fraunces, Source_Sans_3 } from "next/font/google";
 import ThemeRegistry from "@/theme/ThemeRegistry";
 import "./globals.css";
 
-const lexend = Lexend({
+// Variable font: full weight range plus optical size, so large display
+// text gets finer detail and small headings stay sturdy
+const fraunces = Fraunces({
   variable: "--font-heading",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  subsets: ["latin", "latin-ext"],
+  axes: ["opsz"],
 });
 
 const sourceSans = Source_Sans_3({
@@ -23,7 +25,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${lexend.variable} ${sourceSans.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${sourceSans.variable}`}>
       <body>
         <ThemeRegistry>{children}</ThemeRegistry>
       </body>

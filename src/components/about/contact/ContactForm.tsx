@@ -3,11 +3,11 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import FormHelperText from "@mui/material/FormHelperText";
 import NativeSelect from "@mui/material/NativeSelect";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import FormField, { INPUT_SX } from "@/components/shared/form/FormField";
 import { wajaColors } from "@/theme/theme";
 import type { ContactPageContent } from "@/constants/about/contact";
 
@@ -15,45 +15,6 @@ type Values = { name: string; email: string; topic: string; message: string };
 type Errors = Partial<Record<keyof Values, string>>;
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-const INPUT_SX = {
-  bgcolor: "#FFFFFF",
-  borderRadius: "8px",
-  fontSize: "0.95rem",
-  "& .MuiOutlinedInput-notchedOutline": { borderColor: wajaColors.border },
-  "&:hover .MuiOutlinedInput-notchedOutline": { borderColor: wajaColors.primary },
-};
-
-function Field({
-  id,
-  label,
-  error,
-  children,
-}: {
-  id: string;
-  label: string;
-  error?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Box>
-      <Typography
-        component="label"
-        htmlFor={id}
-        variant="body2"
-        sx={{ display: "block", color: wajaColors.foreground, fontWeight: 600, mb: 0.75 }}
-      >
-        {label}
-      </Typography>
-      {children}
-      {error && (
-        <FormHelperText id={`${id}-error`} error sx={{ mx: 0 }}>
-          {error}
-        </FormHelperText>
-      )}
-    </Box>
-  );
-}
 
 export default function ContactForm({
   content,
@@ -131,7 +92,7 @@ export default function ContactForm({
 
       <Stack spacing={2.5}>
         <Box sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" }, gap: 2 }}>
-          <Field id="contact-name" label={content.name.label} error={errors.name}>
+          <FormField id="contact-name" label={content.name.label} error={errors.name}>
             <OutlinedInput
               fullWidth
               size="small"
@@ -143,8 +104,8 @@ export default function ContactForm({
               error={Boolean(errors.name)}
               sx={INPUT_SX}
             />
-          </Field>
-          <Field id="contact-email" label={content.email.label} error={errors.email}>
+          </FormField>
+          <FormField id="contact-email" label={content.email.label} error={errors.email}>
             <OutlinedInput
               fullWidth
               size="small"
@@ -157,10 +118,10 @@ export default function ContactForm({
               error={Boolean(errors.email)}
               sx={INPUT_SX}
             />
-          </Field>
+          </FormField>
         </Box>
 
-        <Field id="contact-topic" label={content.topic.label}>
+        <FormField id="contact-topic" label={content.topic.label}>
           <NativeSelect
             fullWidth
             value={values.topic}
@@ -174,9 +135,9 @@ export default function ContactForm({
               </option>
             ))}
           </NativeSelect>
-        </Field>
+        </FormField>
 
-        <Field id="contact-message" label={content.message.label} error={errors.message}>
+        <FormField id="contact-message" label={content.message.label} error={errors.message}>
           <OutlinedInput
             fullWidth
             multiline
@@ -188,7 +149,7 @@ export default function ContactForm({
             error={Boolean(errors.message)}
             sx={INPUT_SX}
           />
-        </Field>
+        </FormField>
 
         <Box>
           <Button

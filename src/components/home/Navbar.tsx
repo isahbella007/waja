@@ -51,6 +51,8 @@ export default function Navbar() {
           borderBottom: "1px solid",
           borderColor: "divider",
           boxShadow: scrolled ? "0 4px 6px rgba(0,0,0,0.06)" : "none",
+          // Own layer during page transitions so animated pages pass beneath it
+          viewTransitionName: "site-navbar",
           transition: "box-shadow 200ms ease",
         }}
       >

@@ -39,15 +39,26 @@
 
 ### Typography
 
-- **Heading Font:** Lexend
+- **Heading Font:** Fraunces (variable, with optical size axis) — changed from Lexend on 2026-09-25 for an editorial / printed-pamphlet feel
 - **Body Font:** Source Sans 3
-- **Mood:** corporate, trustworthy, accessible, readable, professional, clean
-- **Google Fonts:** [Lexend + Source Sans 3](https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap)
+- **Mood:** editorial, warm, trustworthy, readable, printed-leaflet
+- **Google Fonts:** [Fraunces + Source Sans 3](https://fonts.google.com/specimen/Fraunces)
+- **Loaded via:** `next/font/google` in `src/app/layout.tsx` (`--font-heading`, `--font-body`), not a CSS import
 
-**CSS Import:**
-```css
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
-```
+**Usage rules:**
+- Fraunces for headings and display text only: h1–h6, big numerals ("One", "95%"), section numbers, pull quotes, pathway steps
+- Source Sans 3 for body text **and all controls**: buttons, nav links, form fields, small labels, "Open →" style links. Serif at small UI sizes reads worse
+- Large display text (≥ 3rem) can go light (300); section/card headings stay 500–700 so they stand out from body
+
+### Program colours
+
+Each program has its own colour (see `src/theme/programThemes.ts`), used on its Overview panel, its page cover, its section numbers and the "turn the page" band:
+
+| Program | Surface | Text on surface | Accent on light background |
+|---------|---------|-----------------|----------------------------|
+| One | `#0E7490` teal | `#FFFFFF` | `#0E7490` |
+| Two | `#C2410C` burnt orange | `#FFFFFF` | `#C2410C` |
+| Three | `#F3E3C3` sand | `#164E63` | `#92400E` |
 
 ### Spacing Variables
 

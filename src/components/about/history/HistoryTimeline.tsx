@@ -26,7 +26,7 @@ export default function HistoryTimeline({ entries, ...heading }: HistoryContent[
             <Typography
               variant="subtitle1"
               component="p"
-              sx={{ color: wajaColors.primaryDark, fontWeight: 700, fontFamily: "var(--font-heading), sans-serif" }}
+              sx={{ color: wajaColors.primaryDark, fontWeight: 700, fontFamily: "var(--font-heading), Georgia, serif" }}
             >
               {entry.year}
             </Typography>
