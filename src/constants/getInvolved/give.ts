@@ -1,20 +1,20 @@
 import type { ActionLink, CtaLink, SectionHeading } from "../types";
 
-// Where every "Give online" / "Donate now" button goes. Undefined until a
-// payment provider is chosen: the buttons show but don't navigate yet.
-// WAJA's Bloomerang (Qgiv) hosted donation form, e.g. "https://secure.qgiv.com/for/abcdef".
-// Undefined until it's pasted in: the donate buttons show but don't navigate yet.
-export const DONATE_ONLINE_HREF: string | undefined = undefined;
+
+export const DONATE_ONLINE_HREF: string | undefined = "https://secure.qgiv.com/for/wwajafwao/";
 
 type Titled = { title: string; description: string };
 
-// ---------- /get-involved/give ----------
+
 
 export type GiveFrequency = "monthly" | "once";
 
 export type GiftTier = {
   // Number sent to the giving platform; amount is what people see
   value: number;
+  // Set to true when the Bloomerang form has no preset button for this amount:
+  // it then opens with the amount typed into the form's "Other amount" box instead
+  otherAmount?: boolean;
   amount: string;
   description: string;
 };
@@ -24,10 +24,11 @@ export type GiftTier = {
 //   one-time: …/for/{form}/amount/250.00
 //   monthly:  …/for/{form}/amount/250.00/frequency/m
 // https://help.bloomerang.com/en/articles/13382755-prepopulating-form-values-using-url
-export function buildDonateHref(value: number, frequency: GiveFrequency): string | undefined {
+//   not a preset amount: …/for/{form}/amount/other/5000.00
+export function buildDonateHref(value: number, frequency: GiveFrequency, otherAmount = false): string | undefined {
   if (!DONATE_ONLINE_HREF) return undefined;
   const base = DONATE_ONLINE_HREF.replace(/\/+$/, "");
-  const amount = `/amount/${value.toFixed(2)}`;
+  const amount = `/amount/${otherAmount ? "other/" : ""}${value.toFixed(2)}`;
   return frequency === "monthly" ? `${base}${amount}/frequency/m` : `${base}${amount}`;
 }
 
@@ -99,6 +100,7 @@ export const GIVE_PAGE: GivePageContent = {
       {
         value: 5000,
         amount: "$5,000",
+        otherAmount: true,
         description:
           "Helps fund the next phase for the 19 women: incubation, tools, technology, partner services, business readiness and training centre setup.",
       },
@@ -111,7 +113,7 @@ export const GIVE_PAGE: GivePageContent = {
       { value: "once", label: "One-time", button: "Give {amount} once" },
     ],
     secureNote: "Secure giving through Bloomerang.",
-    taxNote: "U.S. 501(c)(3) · EIN [EIN] · tax-deductible as allowed by law.",
+    taxNote: "U.S. 501(c)(3) · EIN 33-1714992 · tax-deductible as allowed by law.",
     alternative: { label: "Prefer bank transfer or a pledge?", href: "/about/contact?topic=donation" },
   },
   fundingUses: {

@@ -174,7 +174,7 @@ export default function GiveNow({
 
           <ActionButton
             label={buttonTemplate.replace("{amount}", tier.amount)}
-            href={buildDonateHref(tier.value, frequency)}
+            href={buildDonateHref(tier.value, frequency, tier.otherAmount)}
             variant="contained"
             fullWidth
             sx={{ bgcolor: wajaColors.accent, color: "#FFFFFF", mb: 2.5, "&:hover": { bgcolor: wajaColors.accentDark } }}

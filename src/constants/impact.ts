@@ -24,16 +24,26 @@ export type ImpactPageContent = {
   progress: {
     eyebrow: string;
     title: string;
-    // Year selected when the page loads
+    // The present year, marked "Now" in the timeline
     current: string;
+    nowLabel: string;
     years: ImpactYear[];
   };
   centre: {
     eyebrow: string;
     title: string;
     description: string;
-    today: { label: string; description: string; image: ImageContent };
-    secured: { label: string; description: string; image: ImageContent };
+    // Before/after viewer: the secured warehouse today vs the planned centre
+    compare: {
+      todayLabel: string;
+      visionLabel: string;
+      todayCaption: string;
+      visionCaption: string;
+      // Shown on the vision images so nobody mistakes a rendering for a photo
+      visionBadge: string;
+      viewsLabel: string;
+      views: { id: string; label: string; today: ImageContent; vision: ImageContent }[];
+    };
   };
   includes: { title: string; description: string; link: CtaLink; items: string[] };
   why: {
@@ -98,6 +108,7 @@ export const IMPACT_PAGE: ImpactPageContent = {
     eyebrow: "Progress since 2024",
     title: "Where we have been, and where this is going.",
     current: "2026",
+    nowLabel: "Now",
     years: [
       {
         year: "2024",
@@ -153,23 +164,43 @@ export const IMPACT_PAGE: ImpactPageContent = {
     ],
   },
   centre: {
-    eyebrow: "The WAJA training centre",
-    title: "From a shared garage to a technology-enabled training centre.",
+    eyebrow: "The next chapter",
+    title: "A training centre of their own.",
     description:
-      "WAJA has secured a large warehouse space in Ghana that will become the next home for training, technology-enabled learning, diagnostics, personal development and incubation.",
-    today: {
-      label: "Where they train today",
-      description: "A shared garage partnership: real vehicles, real customers, borrowed space and shared tools.",
-      image: {
-        src: "/programs/enterprise.jpg",
-        alt: "A WAJA trainee working under the bonnet of a van in the shared garage yard",
-        position: "center 40%",
-      },
-    },
-    secured: {
-      label: "The warehouse we have secured",
-      description: "Dedicated space we now need to equip: bays, classrooms, diagnostics and safety systems.",
-      image: { alt: "Photo: the secured warehouse as it stands now, empty" },
+      "Finishing the pilot means moving out of a borrowed garage. WAJA has secured a large warehouse in Ghana that will become the home for training, technology-enabled learning, diagnostics, personal development and incubation.",
+    compare: {
+      todayLabel: "Today",
+      visionLabel: "The vision",
+      todayCaption: "The warehouse WAJA has secured in Ghana, as it stands now. It needs to be equipped with bays, classrooms, diagnostics and safety systems.",
+      visionCaption: "The planned WAJA Flagship Garage & Training Hub.",
+      visionBadge: "AI-generated concept",
+      viewsLabel: "Choose a view",
+      views: [
+        {
+          id: "front",
+          label: "Front",
+          today: { src: "/building/current/old_building_front.jpeg", alt: "The front of the secured warehouse today: weathered walls, an open doorway and a bare yard" },
+          vision: { src: "/building/new_building_front.jpeg", alt: "Concept of the front of the WAJA Flagship Garage & Training Hub, with red branding and a service bay" },
+        },
+        {
+          id: "entrance",
+          label: "Entrance",
+          today: { src: "/building/current/old_building_entrance.jpeg", alt: "The warehouse entrance today" },
+          vision: { src: "/building/new_building_entrance.jpeg", alt: "Concept of the new entrance to the WAJA training hub" },
+        },
+        {
+          id: "right-side",
+          label: "Right side",
+          today: { src: "/building/current/old_building_right_side.jpeg", alt: "The right side of the warehouse today" },
+          vision: { src: "/building/new_building_right_side.jpeg", alt: "Concept of the right side of the WAJA training hub" },
+        },
+        {
+          id: "overview",
+          label: "From the street",
+          today: { src: "/building/current/old_building.jpeg", alt: "The long warehouse beside a red dirt road, with Ghana Publishing Corporation lettering still on the wall" },
+          vision: { src: "/building/new_building_overview.jpeg", alt: "Aerial concept of the WAJA Flagship Garage & Training Hub with landscaping and parking" },
+        },
+      ],
     },
   },
   includes: {
@@ -196,8 +227,8 @@ export const IMPACT_PAGE: ImpactPageContent = {
     description:
       "They need a structured environment where they can learn consistently, safely and with the tools required for the future of automotive service. The centre lets WAJA control curriculum, improve training quality, expand technology access and prepare women for real economic opportunity.",
     // TODO(WAJA): replace with the real fit-out target and amount raised, or delete `funding` to hide the bar
-    funding: { raised: "[$X]", goalText: "raised of [$Y] needed to fit out the centre", percentLabel: "[##]%", percent: 0 },
-    button: { label: "Help equip the centre", href: "/get-involved/give/major-gifts#opportunities" },
+    funding: { raised: "$2500", goalText: "raised of $242,500 needed to fit out the centre", percentLabel: "1%", percent: 1 },
+    button: { label: "Help equip the centre", href: "/get-involved/give#give-now" },
   },
   closing: {
     title: "Nineteen women are most of the way there. Take them the rest.",
