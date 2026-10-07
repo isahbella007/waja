@@ -4,7 +4,7 @@ import Link from "next/link";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import EastIcon from "@mui/icons-material/East";
-import { wajaColors } from "@/theme/theme";
+import { typeScale, wajaColors } from "@/theme/theme";
 import type { InvolvementWay } from "@/constants/getInvolved/overview";
 
 const RULE = "1px solid rgba(22,78,99,0.2)";
@@ -44,8 +44,7 @@ export default function WaysToGetInvolved({ ways }: { ways: InvolvementWay[] }) 
               sx={{
                 display: "inline-block",
                 color: wajaColors.foreground,
-                fontSize: { xs: "1.9rem", md: "2.4rem" },
-                lineHeight: 1.1,
+                ...typeScale.subTitle,
                 textDecoration: "none",
                 mb: 0.75,
                 borderRadius: "4px",
@@ -65,26 +64,28 @@ export default function WaysToGetInvolved({ ways }: { ways: InvolvementWay[] }) 
             <Typography variant="body1" sx={{ color: wajaColors.foreground, mb: 1.5 }}>
               {way.description}
             </Typography>
-            <Box component="ul" sx={{ display: "flex", flexWrap: "wrap", gap: 1.5, rowGap: 1, m: 0, p: 0, listStyle: "none" }}>
-              {way.links.map((link) => (
-                <Box component="li" key={link.href}>
-                  <Typography
-                    component={Link}
-                    href={link.href}
-                    variant="body2"
-                    sx={{
-                      color: wajaColors.primaryDark,
-                      textDecoration: "underline",
-                      textDecorationColor: "rgba(14,116,144,0.35)",
-                      textUnderlineOffset: "4px",
-                      "&:hover": { textDecorationColor: wajaColors.primaryDark },
-                    }}
-                  >
-                    {link.label}
-                  </Typography>
-                </Box>
-              ))}
-            </Box>
+            {way.links.length > 0 && (
+              <Box component="ul" sx={{ display: "flex", flexWrap: "wrap", gap: 1.5, rowGap: 1, m: 0, p: 0, listStyle: "none" }}>
+                {way.links.map((link) => (
+                  <Box component="li" key={link.href}>
+                    <Typography
+                      component={Link}
+                      href={link.href}
+                      variant="body2"
+                      sx={{
+                        color: wajaColors.primaryDark,
+                        textDecoration: "underline",
+                        textDecorationColor: "rgba(14,116,144,0.35)",
+                        textUnderlineOffset: "4px",
+                        "&:hover": { textDecorationColor: wajaColors.primaryDark },
+                      }}
+                    >
+                      {link.label}
+                    </Typography>
+                  </Box>
+                ))}
+              </Box>
+            )}
           </Box>
 
           {/* Duplicate of the title link for pointer users; hidden from keyboard and screen readers */}

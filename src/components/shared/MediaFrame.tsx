@@ -32,7 +32,7 @@ export default function MediaFrame({
       ]}
     >
       {image.src ? (
-        <Image src={image.src} alt={image.alt} fill sizes={sizes} style={{ objectFit: "cover" }} />
+        <Image src={image.src} alt={image.alt} fill sizes={sizes} style={{ objectFit: "cover", objectPosition: image.position ?? "center" }} />
       ) : (
         <Typography variant="caption" sx={{ color: placeholderColor, textAlign: "center", px: 2 }}>
           {image.alt}

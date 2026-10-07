@@ -43,7 +43,7 @@ export default function TeamBioDialog({ member, onClose }: { member: TeamMember 
             <MediaFrame
               image={shown.image}
               sizes="64px"
-              placeholderBg="#CFFAFE"
+              placeholderBg={wajaColors.muted}
               placeholderColor={wajaColors.primaryDark}
               sx={{ width: 64, height: 64, flexShrink: 0, borderRadius: "50%", "& .MuiTypography-root": { fontSize: "0.6rem" } }}
             />

@@ -48,11 +48,11 @@ const WAYS_TO_HELP = [
 const FAQS = [
   {
     q: "Is my donation tax-deductible?",
-    a: "Yes. WAJA is a registered U.S. 501(c)(3) nonprofit (EIN [EIN]), so gifts are deductible to the extent allowed by law.",
+    a: "Yes. WAJA is a registered U.S. 501(c)(3) nonprofit (EIN 33-1714992), so gifts are deductible to the extent allowed by law.",
   },
   {
     q: "Where does my money go?",
-    a: "Training tools and operation",
+    a: "Your gift funds the tools, equipment and operational support needed to train women and girls in automotive technology and entrepreneurship.",
   },
   {
     q: "Can I give monthly?",

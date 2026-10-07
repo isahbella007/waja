@@ -29,6 +29,8 @@ export type ImageContent = {
   // Leave src empty to show a labelled placeholder until the real photo is ready
   src?: string;
   alt: string;
+  // Optional focus point when the photo is cropped, as CSS object-position (e.g. "center 30%")
+  position?: string;
 };
 
 // Content for the shared CtaBanner. Buttons render in order: the first is
@@ -37,4 +39,11 @@ export type CtaBannerContent = {
   title: string;
   description?: string;
   buttons: ActionLink[];
+};
+
+// A hosted video: a YouTube link, or a direct video file URL (e.g. from Cloudinary)
+export type VideoContent = {
+  url: string;
+  // Optional WebVTT captions file, for direct video files (YouTube has its own captions)
+  captionsUrl?: string;
 };

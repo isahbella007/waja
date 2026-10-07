@@ -6,7 +6,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import EastIcon from "@mui/icons-material/East";
 import ArrowLink from "@/components/shared/ArrowLink";
-import { wajaColors } from "@/theme/theme";
+import { typeScale, wajaColors } from "@/theme/theme";
 import type { GivePageContent } from "@/constants/getInvolved/give";
 
 const RULE = "1px solid rgba(22,78,99,0.2)";
@@ -20,7 +20,7 @@ export default function LargerScale({ title, link, roles }: GivePageContent["lar
         spacing={1.5}
         sx={{ justifyContent: "space-between", alignItems: { sm: "flex-end" }, pb: 2.5, borderBottom: `2px solid ${wajaColors.foreground}` }}
       >
-        <Typography component="h2" variant="h3" sx={{ color: wajaColors.foreground, fontSize: { xs: "1.9rem", md: "2.5rem" }, lineHeight: 1.15 }}>
+        <Typography component="h2" variant="h3" sx={{ color: wajaColors.foreground, ...typeScale.sectionTitle }}>
           {title}
         </Typography>
         <ArrowLink {...link} />

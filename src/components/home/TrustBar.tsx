@@ -13,11 +13,11 @@ import { Shield } from "@mui/icons-material";
 const TRUST_ITEMS = [
   {
     icon: Verified,
-    label: "Registered U.S. 501(c)(3) · EIN [Placeholder EIN]",
+    label: "Registered U.S. 501(c)(3) · EIN 33-1714992",
   },
   {
     icon: Groups,
-    label: "14 women trained",
+    label: "19 women trained",
   },
   {
     icon: Flag,

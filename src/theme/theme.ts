@@ -23,6 +23,20 @@ export const wajaColors = {
   ring: "#0891B2",
 };
 
+// Site-wide type scale. Use these for headings instead of hand-picked sizes,
+// so every page shares the same sizes and weights.
+const HEADING_FONT = "var(--font-heading), Georgia, serif";
+export const typeScale = {
+  // The one h1 on a page (48px desktop)
+  pageTitle: { fontFamily: HEADING_FONT, fontWeight: 700, fontSize: { xs: "2.25rem", md: "3rem" }, lineHeight: 1.1 },
+  // Section headings (36px desktop)
+  sectionTitle: { fontFamily: HEADING_FONT, fontWeight: 700, fontSize: { xs: "1.75rem", md: "2.25rem" }, lineHeight: 1.2 },
+  // Headings inside a section, rows and pull quotes (24px desktop)
+  subTitle: { fontFamily: HEADING_FONT, fontWeight: 600, fontSize: { xs: "1.3rem", md: "1.5rem" }, lineHeight: 1.3 },
+  // Lead paragraph under a page title (body font, slightly larger)
+  lead: { fontFamily: "var(--font-body), Arial, sans-serif", fontWeight: 400, fontSize: { xs: "1.05rem", md: "1.15rem" }, lineHeight: 1.6 },
+} as const;
+
 const theme = createTheme({
   palette: {
     mode: "light",

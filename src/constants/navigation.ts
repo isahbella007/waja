@@ -32,9 +32,9 @@ export const GET_INVOLVED_NAV: NavItem = {
   children: [
     { label: "Overview", href: "/get-involved/overview" },
     { label: "Give", href: "/get-involved/give" },
-    { label: "Partner with us", href: "/get-involved/partner" },
+    // { label: "Partner with us", href: "/get-involved/partner" },
     { label: "Volunteer", href: "/get-involved/volunteer" },
-    { label: "Events & sponsorship", href: "/get-involved/events" },
+    // { label: "Events & sponsorship", href: "/get-involved/events" },
   ],
 };
 
@@ -44,9 +44,10 @@ export const PROGRAMS_SUBNAV_ACTION: ActionLink = { label: "Apply", href: APPLY_
 export const NAV_LINKS: NavItem[] = [
   ABOUT_NAV,
   PROGRAMS_NAV,
-  { label: "Our Story", href: "/#graduate-story" },
-  { label: "Impact", href: "/#impact" },
+  { label: "Stories", href: "/stories" },
+  { label: "Impact", href: "/impact" },
   GET_INVOLVED_NAV,
 ];
 
-export const DONATE_LINK: CtaLink = { label: "Donate", href: "/#donate" };
+// Every Donate click goes to the Give page amount picker
+export const DONATE_LINK: CtaLink = { label: "Donate", href: "/get-involved/give#give-now" };

@@ -1,17 +1,17 @@
-import type { CtaBannerContent, SectionHeading } from "../types";
+import type { CtaLink, ImageContent, SectionHeading } from "../types";
 
 export type MissionVisionContent = {
   seo: { title: string; description: string };
-  intro: SectionHeading;
+  intro: SectionHeading & { image: ImageContent };
   mission: { title: string; paragraphs: string[] };
   vision: { title: string; paragraphs: string[]; highlight: string };
-  difference: SectionHeading & { rolesLabel: string; roles: string[] };
+  difference: SectionHeading & { rolesLabel: string; roles: string[]; image: ImageContent };
   wholeFamily: {
     pillars: { title: string; caption: string }[];
     title: string;
     paragraphs: string[];
   };
-  cta: CtaBannerContent;
+  closing: { title: string; description: string; primary: CtaLink; secondary: CtaLink };
 };
 
 export const MISSION_VISION: MissionVisionContent = {
@@ -25,6 +25,7 @@ export const MISSION_VISION: MissionVisionContent = {
     title: "Why we exist, and where we're going.",
     description:
       "WAJA stands for West Africa Jeep Adventures for Women and Orphans. We train women and orphans in Ghana for real work in a changing automotive industry.",
+    image: { src: "/students/student_teacher.jpg", alt: "A WAJA trainee working carefully on a car engine", position: "center 30%" },
   },
   mission: {
     title: "Our mission",
@@ -47,6 +48,11 @@ export const MISSION_VISION: MissionVisionContent = {
     description:
       "We combine technical skill, digital learning, personal development and business readiness, so women can build futures that last.",
     rolesLabel: "We prepare women to become:",
+    image: {
+      src: "/students/student.jpg",
+      alt: "A WAJA trainee in overalls working under the bonnet of a van",
+      position: "center 40%",
+    },
     roles: [
       "Automotive diagnostic technicians",
       "Digital service assistants",
@@ -69,12 +75,10 @@ export const MISSION_VISION: MissionVisionContent = {
       "We don't empower individuals in isolation. We empower families: children of mothers in our programs receive parallel educational support, so opportunity carries into the next generation.",
     ],
   },
-  cta: {
+  closing: {
     title: "See how it started.",
     description: "One Jeep, a roadside repair and two women who wanted to learn.",
-    buttons: [
-      { label: "Read our history", href: "/about/history" },
-      { label: "See our programs", href: "/programs" },
-    ],
+    primary: { label: "Read our history", href: "/about/history" },
+    secondary: { label: "See our programs", href: "/programs" },
   },
 };

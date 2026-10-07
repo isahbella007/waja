@@ -58,7 +58,7 @@ export default function GraduateStory() {
             </Box>
             <Button
               variant="text"
-              href="#"
+              href="/stories"
               endIcon={<ArrowForwardIcon />}
               sx={{ alignSelf: "flex-start", color: "primary.main", fontWeight: 600 }}
             >

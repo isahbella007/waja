@@ -1,13 +1,29 @@
-import type { CtaBannerContent, ImageContent, SectionHeading } from "../types";
+import type { CtaLink, ImageContent, SectionHeading, VideoContent } from "../types";
 
 export type HistoryContent = {
   seo: { title: string; description: string };
-  intro: SectionHeading & { image: ImageContent };
+  intro: SectionHeading;
+  film: {
+    eyebrow: string;
+    title: string;
+    caption: string;
+    // Add the hosted video link here when it's ready; until then a placeholder shows
+    video?: VideoContent;
+    poster: ImageContent;
+    orientation: "portrait" | "landscape";
+    playLabel: string;
+    comingSoon: string;
+  };
   turningPoint: { title: string; paragraphs: string[] };
   founderQuote: { quote: string; name: string; role: string; image: ImageContent };
   approach: SectionHeading & { items: { title: string; description: string }[] };
-  timeline: SectionHeading & { entries: { year: string; title: string; description: string }[] };
-  cta: CtaBannerContent;
+  // currentYear is marked "Now"; later years are styled as the road ahead
+  timeline: SectionHeading & {
+    currentYear: string;
+    nowLabel: string;
+    entries: { year: string; title: string; description: string }[];
+  };
+  closing: { title: string; description: string; action: CtaLink };
 };
 
 export const HISTORY: HistoryContent = {
@@ -21,7 +37,16 @@ export const HISTORY: HistoryContent = {
     title: "It started with one Jeep and a roadside repair.",
     description:
       "During a simple roadside repair, two women stepped forward, eager to learn and ready to lead. In that moment we saw it clearly: the talent was already there. What was missing was opportunity.",
-    image: { alt: "Photo: the original Jeep, or the first roadside lesson" },
+  },
+  film: {
+    eyebrow: "The film",
+    title: "The Jeep that started it all.",
+    caption: "The story of the roadside repair, and the Jeep at the centre of it.",
+    // TODO(WAJA): add `video: { url: "…" }` once the Jeep video is hosted (YouTube or Cloudinary)
+    poster: { alt: "Still from the film about the original WAJA Jeep" },
+    orientation: "landscape",
+    playLabel: "Play the film about the Jeep that started WAJA",
+    comingSoon: "Film coming soon",
   },
   turningPoint: {
     title: "From “how can we help?” to “how can we open doors?”",
@@ -35,7 +60,7 @@ export const HISTORY: HistoryContent = {
       "As I stood beside that Jeep, watching two determined women eagerly learn something they had never been given access to before, I realised this wasn't just about fixing a vehicle. It was about unlocking potential.",
     name: "Ben",
     role: "Founder, WAJA",
-    image: { alt: "Photo: Ben, founder" },
+    image: { src: "/team/ben_founder.png", alt: "Ben, founder of WAJA", position: "center 70%" },
   },
   approach: {
     eyebrow: "How we built it",
@@ -70,6 +95,8 @@ export const HISTORY: HistoryContent = {
   timeline: {
     eyebrow: "Timeline",
     title: "Where we've been, year by year.",
+    currentYear: "2026",
+    nowLabel: "Now",
     entries: [
       {
         year: "2024",
@@ -92,7 +119,7 @@ export const HISTORY: HistoryContent = {
         year: "2027",
         title: "A technology-enabled training centre",
         description:
-          "No new intake. WAJA will focus on fully developing the current 17 women through incubation, mentorship, personal development, and business readiness.",
+          "No new intake. WAJA will focus on fully developing the current 19 women through incubation, mentorship, personal development, and business readiness.",
       },
       { 
         year: "2028", 
@@ -101,9 +128,9 @@ export const HISTORY: HistoryContent = {
       }
     ],
   },
-  cta: {
-    title: "The next chapter is the training centre",
-    description: "17 women ready for the next phase. See where they train now and what we are building next.",
-    buttons: [{ label: "See our impact", href: "/#impact" }],
+  closing: {
+    title: "The next chapter is the training centre.",
+    description: "19 women ready for the next phase. See where they train now and what we are building next.",
+    action: { label: "See our impact", href: "/impact" },
   },
 };

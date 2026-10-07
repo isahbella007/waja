@@ -1,59 +1,45 @@
 import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
+import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import SectionTitle from "@/components/shared/SectionTitle";
-import MediaFrame from "@/components/shared/MediaFrame";
 import { wajaColors } from "@/theme/theme";
 import type { TeamContent } from "@/constants/about/team";
 
+const RULE = "1px solid rgba(22,78,99,0.2)";
+
+// A ruled "credits" list: name in serif, role beside it. Grows cleanly as volunteers join.
 export default function VolunteerList({ people, ...heading }: TeamContent["volunteers"]) {
   return (
-    <Stack spacing={{ xs: 3, md: 4 }}>
-      <SectionTitle {...heading} />
-      <Box
-        component="ul"
-        sx={{
-          display: "grid",
-          gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr" },
-          gap: 2,
-          m: 0,
-          p: 0,
-          listStyle: "none",
-        }}
-      >
-        {people.map((person) => (
-          <Box
-            component="li"
-            key={person.id}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: 2,
-              bgcolor: "#FFFFFF",
-              border: "1px solid",
-              borderColor: "divider",
-              borderRadius: "12px",
-              p: 2.5,
-            }}
-          >
-            <MediaFrame
-              image={person.image}
-              sizes="56px"
-              placeholderBg="#CFFAFE"
-              placeholderColor={wajaColors.primaryDark}
-              sx={{ width: 56, height: 56, flexShrink: 0, borderRadius: "50%", "& .MuiTypography-root": { fontSize: "0.6rem" } }}
-            />
-            <Box>
-              <Typography variant="subtitle1" component="h3" sx={{ color: wajaColors.foreground, fontWeight: 700 }}>
+    <Grid container spacing={{ xs: 3, md: 8 }}>
+      <Grid size={{ xs: 12, md: 5 }}>
+        <SectionTitle {...heading} />
+      </Grid>
+      <Grid size={{ xs: 12, md: 7 }}>
+        <Box component="ul" sx={{ m: 0, p: 0, listStyle: "none", borderTop: `2px solid ${wajaColors.foreground}`, mt: { md: 4 } }}>
+          {people.map((person) => (
+            <Box
+              component="li"
+              key={person.id}
+              sx={{
+                display: "grid",
+                gridTemplateColumns: { xs: "1fr", sm: "minmax(0, 1fr) minmax(0, 1fr)" },
+                columnGap: 3,
+                rowGap: 0.25,
+                alignItems: "baseline",
+                py: 2,
+                borderBottom: RULE,
+              }}
+            >
+              <Typography component="span" sx={{ fontFamily: "var(--font-heading), Georgia, serif", fontSize: { xs: "1.25rem", md: "1.4rem" }, color: wajaColors.foreground }}>
                 {person.name}
               </Typography>
-              <Typography variant="body2" sx={{ color: "text.secondary" }}>
+              <Typography component="span" variant="body2" sx={{ color: "text.secondary" }}>
                 {person.role}
               </Typography>
             </Box>
-          </Box>
-        ))}
-      </Box>
-    </Stack>
+          ))}
+        </Box>
+      </Grid>
+    </Grid>
   );
 }

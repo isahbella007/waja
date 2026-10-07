@@ -6,6 +6,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { SHEET_PX } from "@/components/shared/PamphletSheet";
+import { typeScale } from "@/theme/theme";
 import type { ProgramTheme } from "@/theme/programThemes";
 import type { Program, ProgramFact } from "@/constants/programs/programs";
 
@@ -91,7 +92,7 @@ export default function ProgramCover({
           <Typography
             component="h1"
             variant="h2"
-            sx={{ color: theme.onSurface, fontSize: { xs: "2rem", md: "3rem" }, lineHeight: 1.1, mb: 1.5 }}
+            sx={{ ...typeScale.pageTitle, color: theme.onSurface, mb: 1.5 }}
           >
             {program.title}
           </Typography>

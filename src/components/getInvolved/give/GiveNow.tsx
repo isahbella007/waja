@@ -6,6 +6,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import ActionButton from "@/components/shared/ActionButton";
 import ArrowLink from "@/components/shared/ArrowLink";
+import CandidSeal from "@/components/shared/CandidSeal";
 import { wajaColors } from "@/theme/theme";
 import { buildDonateHref, type GiveFrequency, type GivePageContent } from "@/constants/getInvolved/give";
 
@@ -186,7 +187,10 @@ export default function GiveNow({
             <Typography variant="caption" component="p" sx={{ color: wajaColors.border, mb: 1.5 }}>
               {taxNote}
             </Typography>
-            <ArrowLink {...alternative} color="#FFFFFF" />
+            <Box sx={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", gap: 2 }}>
+              <ArrowLink {...alternative} color="#FFFFFF" />
+              <CandidSeal size={72} onDark />
+            </Box>
           </Box>
         </Box>
       </Grid>

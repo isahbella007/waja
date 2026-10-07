@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import ArrowLink from "@/components/shared/ArrowLink";
-import { wajaColors } from "@/theme/theme";
+import { typeScale, wajaColors } from "@/theme/theme";
 import type { GetInvolvedOverviewContent } from "@/constants/getInvolved/overview";
 
 export default function JustAsk({
@@ -19,7 +19,7 @@ export default function JustAsk({
           <Typography
             component="h2"
             variant="h3"
-            sx={{ color: wajaColors.foreground, fontSize: { xs: "1.9rem", md: "2.5rem" }, lineHeight: 1.15, mb: 1.5 }}
+            sx={{ color: wajaColors.foreground, ...typeScale.sectionTitle, mb: 1.5 }}
           >
             {title}
           </Typography>

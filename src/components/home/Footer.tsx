@@ -12,6 +12,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import XIcon from "@mui/icons-material/X";
+import CandidSeal from "@/components/shared/CandidSeal";
 
 const SOCIALS = [
   { icon: FacebookIcon, label: "WAJA on Facebook", href: "#" },
@@ -173,12 +174,17 @@ export default function Footer() {
           <Typography variant="caption" sx={{ color: "rgba(255,255,255,0.6)" }}>
             © {new Date().getFullYear()} WAJA. All rights reserved.
           </Typography>
-          <Typography variant="caption" sx={{ color: "rgba(255,255,255,0.6)", maxWidth: 520 }}>
-            WAJA is a U.S. 501(c)(3) nonprofit organization advancing workforce
-            development, technology access, and economic opportunity for women and
-            orphans in Ghana and West Africa. EIN: [Placeholder EIN]. Donations are
-            tax-deductible to the extent allowed by law.
-          </Typography>
+          <Stack direction="row" spacing={2.5} sx={{ alignItems: "center" }}>
+            <Typography variant="caption" sx={{ color: "rgba(255,255,255,0.6)", maxWidth: 520 }}>
+              WAJA is a U.S. 501(c)(3) nonprofit organization advancing workforce
+              development, technology access, and economic opportunity for women and
+              orphans in Ghana and West Africa. EIN: 33-1714992. Donations are
+              tax-deductible to the extent allowed by law.
+            </Typography>
+            <Box sx={{ flexShrink: 0 }}>
+              <CandidSeal size={72} onDark />
+            </Box>
+          </Stack>
         </Stack>
       </Container>
     </Box>

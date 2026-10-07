@@ -97,7 +97,7 @@ export default function ImpactNumbers() {
         />
       </Stack>
 
-      <Stack sx={{ alignItems: "center", mt: { xs: 6, md: 8 } }}>
+      {/* <Stack sx={{ alignItems: "center", mt: { xs: 6, md: 8 } }}>
         <Button
           variant="outlined"
           href="#"
@@ -111,7 +111,7 @@ export default function ImpactNumbers() {
         >
           Download our [Placeholder Year] Impact Report
         </Button>
-      </Stack>
+      </Stack> */}
     </SectionContainer>
   );
 }

@@ -46,7 +46,7 @@ export default function ProgramsIntro({
         <MediaFrame
           image={image}
           sizes="(min-width: 900px) 50vw, 100vw"
-          placeholderBg="#CFFAFE"
+          placeholderBg={wajaColors.muted}
           placeholderColor={wajaColors.primaryDark}
           sx={{ aspectRatio: "4 / 3", borderRadius: "16px", border: "1px solid", borderColor: "divider" }}
         />

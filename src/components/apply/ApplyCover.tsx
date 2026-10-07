@@ -3,7 +3,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import ActionButton from "@/components/shared/ActionButton";
 import { SHEET_PX } from "@/components/shared/PamphletSheet";
-import { wajaColors } from "@/theme/theme";
+import { typeScale, wajaColors } from "@/theme/theme";
 import type { ApplyPageContent } from "@/constants/apply/applyPage";
 
 // Dark cover panel at the top of the Apply leaflet
@@ -23,7 +23,7 @@ export default function ApplyCover({
       <Typography
         component="h1"
         variant="h2"
-        sx={{ color: "#FFFFFF", fontSize: { xs: "2.5rem", md: "4rem" }, fontWeight: 400, lineHeight: 1.05, maxWidth: 760, mb: 2.5 }}
+        sx={{ ...typeScale.pageTitle, color: "#FFFFFF", maxWidth: 760, mb: 2.5 }}
       >
         {title}
       </Typography>

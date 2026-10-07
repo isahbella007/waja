@@ -2,6 +2,8 @@ import type { ActionLink, CtaLink, SectionHeading } from "../types";
 
 // Where every "Give online" / "Donate now" button goes. Undefined until a
 // payment provider is chosen: the buttons show but don't navigate yet.
+// WAJA's Bloomerang (Qgiv) hosted donation form, e.g. "https://secure.qgiv.com/for/abcdef".
+// Undefined until it's pasted in: the donate buttons show but don't navigate yet.
 export const DONATE_ONLINE_HREF: string | undefined = undefined;
 
 type Titled = { title: string; description: string };
@@ -17,13 +19,16 @@ export type GiftTier = {
   description: string;
 };
 
-// Link to the giving platform with the chosen amount, or undefined while
-// DONATE_ONLINE_HREF isn't set (the button then shows but doesn't navigate).
-// Adjust the parameter names to match the platform once it's connected.
+// Link to the Bloomerang form with the chosen amount (and monthly, if picked) already selected.
+// Bloomerang/Qgiv reads these from the path:
+//   one-time: …/for/{form}/amount/250.00
+//   monthly:  …/for/{form}/amount/250.00/frequency/m
+// https://help.bloomerang.com/en/articles/13382755-prepopulating-form-values-using-url
 export function buildDonateHref(value: number, frequency: GiveFrequency): string | undefined {
   if (!DONATE_ONLINE_HREF) return undefined;
-  const separator = DONATE_ONLINE_HREF.includes("?") ? "&" : "?";
-  return `${DONATE_ONLINE_HREF}${separator}amount=${value}&frequency=${frequency}`;
+  const base = DONATE_ONLINE_HREF.replace(/\/+$/, "");
+  const amount = `/amount/${value.toFixed(2)}`;
+  return frequency === "monthly" ? `${base}${amount}/frequency/m` : `${base}${amount}`;
 }
 
 export type GivePageContent = {
@@ -66,13 +71,13 @@ export const GIVE_PAGE: GivePageContent = {
   seo: {
     title: "Ways to Give | WAJA",
     description:
-      "Give to WAJA and help 17 women in Ghana, including 3 orphans, move into the next phase of automotive training, technology learning and independence.",
+      "Give to WAJA and help 19 women in Ghana, including 3 orphans, move into the next phase of automotive training, technology learning and independence.",
   },
   intro: {
     eyebrow: "Ways to give",
     title: "Every gift is tied to something a trainee can hold.",
     description:
-      "WAJA is raising support to help 17 women, including 3 orphans, move into the next phase: training, technology learning, incubation and long-term independence.",
+      "WAJA is raising support to help 19 women, including 3 orphans, move into the next phase: training, technology learning, incubation and long-term independence.",
     jumpLabel: "On this page",
     jumpLinks: [
       { label: "Give now", href: "#give-now" },
@@ -95,7 +100,7 @@ export const GIVE_PAGE: GivePageContent = {
         value: 5000,
         amount: "$5,000",
         description:
-          "Helps fund the next phase for the 17 women: incubation, tools, technology, partner services, business readiness and training centre setup.",
+          "Helps fund the next phase for the 19 women: incubation, tools, technology, partner services, business readiness and training centre setup.",
       },
     ],
     defaultValue: 250,
@@ -105,7 +110,7 @@ export const GIVE_PAGE: GivePageContent = {
       { value: "monthly", label: "Monthly", button: "Give {amount} monthly" },
       { value: "once", label: "One-time", button: "Give {amount} once" },
     ],
-    secureNote: "Secure giving through Boomerang.",
+    secureNote: "Secure giving through Bloomerang.",
     taxNote: "U.S. 501(c)(3) · EIN [EIN] · tax-deductible as allowed by law.",
     alternative: { label: "Prefer bank transfer or a pledge?", href: "/about/contact?topic=donation" },
   },

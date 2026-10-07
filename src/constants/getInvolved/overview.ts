@@ -43,11 +43,11 @@ export const GET_INVOLVED_OVERVIEW: GetInvolvedOverviewContent = {
   seo: {
     title: "Get Involved | WAJA",
     description:
-      "Give, partner, volunteer or sponsor an event. Seventeen women in Ghana are ready for the next phase of their automotive training. Pick your part.",
+      "Give, partner, volunteer or sponsor an event. Nineteen women in Ghana are ready for the next phase of their automotive training. Pick your part.",
   },
   intro: {
     eyebrow: "Get involved",
-    title: "Seventeen women are ready for the next phase. Pick your part.",
+    title: "Nineteen women are ready for the next phase. Pick your part.",
     description:
       "Some people fund a trainee. Some open a workshop door. Some teach on a Saturday. Whatever you have, there is a way to use it here.",
     jumpLabel: "Ways to get involved",
@@ -67,19 +67,20 @@ export const GET_INVOLVED_OVERVIEW: GetInvolvedOverviewContent = {
         { label: "In-kind donations", href: "/get-involved/give/in-kind" },
       ],
     },
-    {
-      id: "partner",
-      title: "Partner with us",
-      audience: "For companies, schools, foundations and investors",
-      description:
-        "Workshops that host apprentices, employers who hire graduates, funders backing the training centre, and industry partners shaping the curriculum.",
-      href: "/get-involved/partner",
-      links: [
-        { label: "Apprenticeship partners", href: "/get-involved/partner#apprenticeships" },
-        { label: "Corporate & foundation support", href: "/get-involved/partner#corporate-foundation" },
-        { label: "The excellence centre vision", href: "/get-involved/partner#excellence-centre" },
-      ],
-    },
+    
+    // {
+    //   id: "partner",
+    //   title: "Partner with us",
+    //   audience: "For companies, schools, foundations and investors",
+    //   description:
+    //     "Workshops that host apprentices, employers who hire graduates, funders backing the training centre, and industry partners shaping the curriculum.",
+    //   href: "/get-involved/partner",
+    //   links: [
+    //     { label: "Apprenticeship partners", href: "/get-involved/partner#apprenticeships" },
+    //     { label: "Corporate & foundation support", href: "/get-involved/partner#corporate-foundation" },
+    //     { label: "The excellence centre vision", href: "/get-involved/partner#excellence-centre" },
+    //   ],
+    // },
     {
       id: "volunteer",
       title: "Volunteer",
@@ -87,29 +88,26 @@ export const GET_INVOLVED_OVERVIEW: GetInvolvedOverviewContent = {
       description:
         "Mentor a trainee, teach a module, advise on business or fundraising, or help with research and outreach. Remote and in-Ghana roles both exist.",
       href: "/get-involved/volunteer",
-      links: [
-        { label: "Mentor or trainer", href: "/get-involved/volunteer#mentor-trainer" },
-        { label: "Advisory & professional skills", href: "/get-involved/volunteer#advisory" },
-        { label: "Fundraising & outreach", href: "/get-involved/volunteer#fundraising-outreach" },
-      ],
+      links: [],
     },
-    {
-      id: "events",
-      title: "Events & sponsorship",
-      audience: "For brands, teams and anyone who likes to show up",
-      description:
-        "Run for Change 5K and other events raise funds and awareness. Sponsors get visibility; runners get a morning out for a good reason.",
-      href: "/get-involved/events",
-      links: [
-        { label: "Run for Change 5K", href: "/get-involved/events#run-for-change" },
-        { label: "Event sponsorship", href: "/get-involved/events#sponsorship" },
-        { label: "Host your own fundraiser", href: "/get-involved/events#host-a-fundraiser" },
-      ],
-    },
+    
+    // {
+    //   id: "events",
+    //   title: "Events & sponsorship",
+    //   audience: "For brands, teams and anyone who likes to show up",
+    //   description:
+    //     "Run for Change 5K and other events raise funds and awareness. Sponsors get visibility; runners get a morning out for a good reason.",
+    //   href: "/get-involved/events",
+    //   links: [
+    //     { label: "Run for Change 5K", href: "/get-involved/events#run-for-change" },
+    //     { label: "Event sponsorship", href: "/get-involved/events#sponsorship" },
+    //     { label: "Host your own fundraiser", href: "/get-involved/events#host-a-fundraiser" },
+    //   ],
+    // },
   ],
   funding: {
     eyebrow: "What support funds right now",
-    title: "The 17 women need to finish what they started.",
+    title: "The 19 women need to finish what they started.",
     description:
       "WAJA is raising support to help them complete pilot training, move into incubation and prepare for long-term independence.",
     button: { label: "Fund a trainee", href: "/get-involved/give" },

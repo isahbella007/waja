@@ -16,6 +16,7 @@ export type Volunteer = {
   id: string;
   name: string;
   role: string;
+  // Not shown in the current credits-style list; kept for a future layout with photos
   image: ImageContent;
 };
 
@@ -58,7 +59,7 @@ export const TEAM: TeamContent = {
   },
   intro: {
     eyebrow: "Our team",
-    title: "Building the future of automotive opportunity in West Africa.",
+    title: "The people who open the workshop door.",
     paragraphs: [
       "WAJA is led by a team committed to strengthening workforce development, expanding economic opportunity and building modern automotive service infrastructure in West Africa.",
       "Our leadership team brings together experience in business, technical training, operations and international development.",
@@ -71,7 +72,8 @@ export const TEAM: TeamContent = {
     },
   },
   leadership: {
-    title: "Leadership",
+    eyebrow: "Leadership",
+    title: "Who leads the work.",
     readBioLabel: "Read full bio",
     members: [
       {
@@ -80,15 +82,30 @@ export const TEAM: TeamContent = {
         role: "Founder",
         summary: "[Two lines on his background and what he does at WAJA.]",
         bio: ["[Full bio paragraph one.]", "[Full bio paragraph two.]"],
-        image: { alt: "Photo: Ben" },
+        image: { src: "/team/ben_founder.png", alt: "Ben, founder of WAJA, smiling", position: "center 75%" },
       },
-      memberPlaceholder("leader-2"),
-      memberPlaceholder("leader-3"),
-      memberPlaceholder("leader-4"),
+      {
+        id: "shirley",
+        name: "Shirley Werchota",
+        role: "CEO",
+        summary: "[Two lines on her background and what he does at WAJA.]",
+        bio: ["[Full bio paragraph one.]", "[Full bio paragraph two.]"],
+        image: { src: "/team/shirley.jpg", alt: "Shirley Werchota, CEO of WAJA", position: "center 30%" },
+      },
+      {
+        id: "abigail",
+        name: "Abigail Owusu",
+        role: "COO",
+        summary: "[Two lines on her background and what she does at WAJA.]",
+        bio: ["[Full bio paragraph one.]", "[Full bio paragraph two.]"],
+        image: { alt: "Photo: Abigail Owusu" },
+      },
+      
     ],
   },
   volunteers: {
-    title: "Volunteers",
+    eyebrow: "Volunteers",
+    title: "The people who give their time.",
     description:
       "As dedicated volunteers, they are an essential part of our efforts to raise funds responsibly, promote awareness and deliver lasting change through collaboration, research and workforce development.",
     people: [

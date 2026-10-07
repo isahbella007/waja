@@ -1,6 +1,6 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { wajaColors } from "@/theme/theme";
+import { typeScale, wajaColors } from "@/theme/theme";
 import type { SectionHeading } from "@/constants/types";
 
 export default function PageIntro({ eyebrow, title, description }: SectionHeading) {
@@ -17,7 +17,7 @@ export default function PageIntro({ eyebrow, title, description }: SectionHeadin
       <Typography
         component="h1"
         variant="h2"
-        sx={{ fontSize: { xs: "2.25rem", md: "3rem" }, color: wajaColors.foreground }}
+        sx={{ ...typeScale.pageTitle, color: wajaColors.foreground }}
       >
         {title}
       </Typography>

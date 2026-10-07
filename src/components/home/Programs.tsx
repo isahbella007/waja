@@ -12,6 +12,7 @@ import { ArrowForward } from "@mui/icons-material";
 const PROGRAMS = [
   {
     accent: wajaColors.primary,
+    href: "/programs/automotive-skills",
     image: "/programs/automotive.jpg",
     title: "Women's Automotive Skills & Certification Program",
     description:
@@ -20,6 +21,7 @@ const PROGRAMS = [
   },
   {
     accent: wajaColors.accent,
+    href: "/programs/microenterprise",
     image: "/programs/enterprise.jpg",
     title: "Women's Microenterprise & Market Linkage Accelerator",
     description:
@@ -28,6 +30,7 @@ const PROGRAMS = [
   },
   {
     accent: wajaColors.primaryDark,
+    href: "/programs/life-skills-leadership",
     image: "/programs/life.jpg",
     title: "Life Skills, Leadership & Workforce Readiness Initiative",
     description:
@@ -89,10 +92,14 @@ export default function Programs() {
                     spacing={1}
                     sx={{ alignItems: "center", mt: "auto", pt: 2, cursor: "pointer" }}
                     component="a"
-                    href="#programs"
+                    href={program.href}
                   >
                     <Typography variant="body1" sx={{ fontWeight: 600, color: program.accent }}>
                       {program.buttonText}
+                      {/* So screen readers hear which program, not three identical "Learn More"s */}
+                      <Box component="span" sx={{ position: "absolute", width: "1px", height: "1px", overflow: "hidden", clip: "rect(0 0 0 0)", whiteSpace: "nowrap" }}>
+                        {`: ${program.title}`}
+                      </Box>
                     </Typography>
                     <ArrowForward sx={{ fontSize: 20, color: program.accent }} />
                   </Stack>

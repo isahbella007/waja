@@ -31,7 +31,7 @@ export default function GetInvolvedOverviewPage() {
       <MediaFrame
         image={content.photo}
         sizes="100vw"
-        placeholderBg="#CFFAFE"
+        placeholderBg={wajaColors.muted}
         placeholderColor={wajaColors.primaryDark}
         sx={{ height: { xs: 240, sm: 320, md: 420 } }}
       />

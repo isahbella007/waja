@@ -7,12 +7,13 @@ import Typography from "@mui/material/Typography";
 import SectionTitle from "@/components/shared/SectionTitle";
 import ActionButton from "@/components/shared/ActionButton";
 import ArrowLink from "@/components/shared/ArrowLink";
+import CandidSeal from "@/components/shared/CandidSeal";
 import { RULE, SERIF } from "@/components/getInvolved/give/GiveSections";
-import { wajaColors } from "@/theme/theme";
+import { typeScale, wajaColors } from "@/theme/theme";
 import type { MajorGiftsContent } from "@/constants/getInvolved/give";
 
 const ACCENT = wajaColors.accentDark;
-const HEADING_SX = { color: wajaColors.foreground, fontSize: { xs: "1.9rem", md: "2.5rem" }, lineHeight: 1.15 };
+const HEADING_SX = { color: wajaColors.foreground, ...typeScale.sectionTitle };
 
 // Heading on the left, ruled "title | description" rows on the right
 export function ApproachRows({ eyebrow, title, principles }: MajorGiftsContent["approach"]) {
@@ -148,6 +149,9 @@ export function Stewardship({ eyebrow, title, description, expectations }: Major
     <Grid container spacing={{ xs: 3, md: 6 }}>
       <Grid size={{ xs: 12, md: 4 }}>
         <SectionTitle eyebrow={eyebrow} title={title} description={description} />
+        <Box sx={{ mt: 3 }}>
+          <CandidSeal />
+        </Box>
       </Grid>
       <Grid size={{ xs: 12, md: 8 }}>
         <Box

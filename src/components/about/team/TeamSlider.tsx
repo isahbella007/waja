@@ -10,7 +10,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import SectionTitle from "@/components/shared/SectionTitle";
-import MediaFrame from "@/components/shared/MediaFrame";
+import TeamPortrait from "@/components/about/team/TeamPortrait";
 import TeamBioDialog from "@/components/about/team/TeamBioDialog";
 import { wajaColors } from "@/theme/theme";
 import type { SectionHeading } from "@/constants/types";
@@ -113,7 +113,7 @@ export default function TeamSlider({
           gap: `${GAP_PX}px`,
           m: 0,
           p: 0,
-          // Room so card borders/focus rings aren't clipped by the scroll container
+          // Room so focus rings aren't clipped by the scroll container
           py: 0.5,
           listStyle: "none",
           overflowX: "auto",
@@ -133,35 +133,32 @@ export default function TeamSlider({
             aria-roledescription="slide"
             aria-label={`${index + 1} of ${members.length}`}
             sx={{
-              // One card plus a peek on phones, two on tablets, three on desktop
+              // Two portraits plus a peek on phones, three on tablets, four on desktop
               flex: {
-                xs: "0 0 85%",
-                sm: `0 0 calc((100% - ${GAP_PX}px) / 2)`,
-                md: `0 0 calc((100% - ${GAP_PX * 2}px) / 3)`,
+                xs: "0 0 44%",
+                sm: `0 0 calc((100% - ${GAP_PX * 2}px) / 3)`,
+                md: `0 0 calc((100% - ${GAP_PX * 3}px) / 4)`,
               },
               scrollSnapAlign: "start",
               display: "flex",
               flexDirection: "column",
-              bgcolor: "#FFFFFF",
-              border: "1px solid",
-              borderColor: "divider",
-              borderRadius: "12px",
-              overflow: "hidden",
             }}
           >
-            <MediaFrame
-              image={member.image}
-              sizes="(min-width: 900px) 33vw, (min-width: 600px) 50vw, 85vw"
-              placeholderBg="#CFFAFE"
-              placeholderColor={wajaColors.primaryDark}
-              sx={{ aspectRatio: "16 / 10" }}
-            />
-            <Box sx={{ p: 2.5, display: "flex", flexDirection: "column", flexGrow: 1 }}>
-              <Typography variant="h6" component="h3" sx={{ color: wajaColors.foreground, fontWeight: 700, lineHeight: 1.3 }}>
-                {member.name}
-              </Typography>
-              <Typography variant="body2" sx={{ color: wajaColors.accent, fontWeight: 600, mb: 1 }}>
+            {/* Portrait, then name and role under a rule: no card box */}
+            <TeamPortrait name={member.name} image={member.image} sizes="(min-width: 900px) 25vw, (min-width: 600px) 33vw, 45vw" />
+            <Box sx={{ pt: 1.5, mt: 1.5, borderTop: `2px solid ${wajaColors.foreground}`, display: "flex", flexDirection: "column", flexGrow: 1 }}>
+              <Typography
+                variant="overline"
+                component="p"
+                sx={{ color: wajaColors.accentDark, fontWeight: 600, letterSpacing: "0.12em", lineHeight: 1.5 }}
+              >
                 {member.role}
+              </Typography>
+              <Typography
+                component="h3"
+                sx={{ fontFamily: "var(--font-heading), Georgia, serif", fontSize: { xs: "1.1rem", md: "1.25rem" }, lineHeight: 1.2, color: wajaColors.foreground, mb: 0.75 }}
+              >
+                {member.name}
               </Typography>
               <Typography variant="body2" sx={{ color: "text.secondary", mb: 2, flexGrow: 1 }}>
                 {member.summary}

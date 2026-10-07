@@ -1,6 +1,6 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { wajaColors } from "@/theme/theme";
+import { typeScale, wajaColors } from "@/theme/theme";
 import type { SectionHeading } from "@/constants/types";
 
 // h2-level section heading (PageIntro is the h1 version)
@@ -18,7 +18,7 @@ export default function SectionTitle({ eyebrow, title, description }: SectionHea
       <Typography
         component="h2"
         variant="h2"
-        sx={{ fontSize: { xs: "1.75rem", md: "2.25rem" }, lineHeight: 1.2, color: wajaColors.foreground }}
+        sx={{ ...typeScale.sectionTitle, color: wajaColors.foreground }}
       >
         {title}
       </Typography>

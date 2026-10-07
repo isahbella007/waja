@@ -12,7 +12,7 @@ import { GET_INVOLVED_OVERVIEW } from "@/constants/getInvolved/overview";
 const slugOf = (href: string) => href.split("/").pop() ?? "";
 
 // Ways that now have their own designed pages (static folders win over this route)
-const BUILT = new Set(["give"]);
+const BUILT = new Set(["give", "volunteer"]);
 
 export const dynamicParams = false;
 

@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import SectionTitle from "@/components/shared/SectionTitle";
-import { wajaColors } from "@/theme/theme";
+import { typeScale, wajaColors } from "@/theme/theme";
 import type { GivePageContent } from "@/constants/getInvolved/give";
 
 export const SERIF = "var(--font-heading), Georgia, serif";
@@ -39,7 +39,7 @@ export function FundingGroups({ title, description, groups }: GivePageContent["f
     <Box>
       <Grid container spacing={{ xs: 2, md: 6 }} sx={{ alignItems: "flex-end", pb: 2.5, borderBottom: `2px solid ${wajaColors.foreground}` }}>
         <Grid size={{ xs: 12, md: 7 }}>
-          <Typography component="h2" variant="h3" sx={{ color: wajaColors.foreground, fontSize: { xs: "1.9rem", md: "2.5rem" }, lineHeight: 1.15 }}>
+          <Typography component="h2" variant="h3" sx={{ color: wajaColors.foreground, ...typeScale.sectionTitle }}>
             {title}
           </Typography>
         </Grid>
@@ -97,7 +97,7 @@ export function SolutionBand({ eyebrow, title, description, points, principles }
             <Typography
               component="h2"
               variant="h3"
-              sx={{ color: "#FFFFFF", fontSize: { xs: "1.9rem", md: "2.5rem" }, lineHeight: 1.15, mb: 2 }}
+              sx={{ color: "#FFFFFF", ...typeScale.sectionTitle, mb: 2 }}
             >
               {title}
             </Typography>

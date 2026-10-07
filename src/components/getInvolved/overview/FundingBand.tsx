@@ -3,7 +3,7 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import ActionButton from "@/components/shared/ActionButton";
-import { wajaColors } from "@/theme/theme";
+import { typeScale, wajaColors } from "@/theme/theme";
 import type { GetInvolvedOverviewContent } from "@/constants/getInvolved/overview";
 
 // Full-width dark band: what money is needed for right now
@@ -19,7 +19,7 @@ export default function FundingBand({ eyebrow, title, description, button, items
             <Typography
               component="h2"
               variant="h3"
-              sx={{ color: "#FFFFFF", fontSize: { xs: "1.9rem", md: "2.5rem" }, lineHeight: 1.15, mb: 2 }}
+              sx={{ color: "#FFFFFF", ...typeScale.sectionTitle, mb: 2 }}
             >
               {title}
             </Typography>
