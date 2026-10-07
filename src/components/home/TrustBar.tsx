@@ -17,7 +17,7 @@ const TRUST_ITEMS = [
   },
   {
     icon: Groups,
-    label: "19 women trained",
+    label: "17 women trained",
   },
   {
     icon: Flag,

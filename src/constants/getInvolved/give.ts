@@ -72,13 +72,13 @@ export const GIVE_PAGE: GivePageContent = {
   seo: {
     title: "Ways to Give | WAJA",
     description:
-      "Give to WAJA and help 19 women in Ghana, including 3 orphans, move into the next phase of automotive training, technology learning and independence.",
+      "Give to WAJA and help 17 women in Ghana, including 3 orphans, move into the next phase of automotive training, technology learning and independence.",
   },
   intro: {
     eyebrow: "Ways to give",
     title: "Every gift is tied to something a trainee can hold.",
     description:
-      "WAJA is raising support to help 19 women, including 3 orphans, move into the next phase: training, technology learning, incubation and long-term independence.",
+      "WAJA is raising support to help 17 women, including 3 orphans, move into the next phase: training, technology learning, incubation and long-term independence.",
     jumpLabel: "On this page",
     jumpLinks: [
       { label: "Give now", href: "#give-now" },
@@ -102,7 +102,7 @@ export const GIVE_PAGE: GivePageContent = {
         amount: "$5,000",
         otherAmount: true,
         description:
-          "Helps fund the next phase for the 19 women: incubation, tools, technology, partner services, business readiness and training centre setup.",
+          "Helps fund the next phase for the 17 women: incubation, tools, technology, partner services, business readiness and training centre setup.",
       },
     ],
     defaultValue: 250,

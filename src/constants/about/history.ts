@@ -106,9 +106,9 @@ export const HISTORY: HistoryContent = {
       },
       {
         year: "2025",
-        title: "19 women still advancing",
+        title: "17 women in training",
         description:
-          "19 women remained actively committed and continued training, including 3 orphans.",
+          "From 2025, 17 women remained actively committed and in training, including 3 orphans.",
       },
       {
         year: "2026",
@@ -119,7 +119,7 @@ export const HISTORY: HistoryContent = {
         year: "2027",
         title: "A technology-enabled training centre",
         description:
-          "No new intake. WAJA will focus on fully developing the current 19 women through incubation, mentorship, personal development, and business readiness.",
+          "No new intake. WAJA will focus on fully developing the current 17 women through incubation, mentorship, personal development, and business readiness.",
       },
       { 
         year: "2028", 
@@ -130,7 +130,7 @@ export const HISTORY: HistoryContent = {
   },
   closing: {
     title: "The next chapter is the training centre.",
-    description: "19 women ready for the next phase. See where they train now and what we are building next.",
+    description: "17 women ready for the next phase. See where they train now and what we are building next.",
     action: { label: "See our impact", href: "/impact" },
   },
 };

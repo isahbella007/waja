@@ -43,11 +43,11 @@ export const GET_INVOLVED_OVERVIEW: GetInvolvedOverviewContent = {
   seo: {
     title: "Get Involved | WAJA",
     description:
-      "Give, partner, volunteer or sponsor an event. Nineteen women in Ghana are ready for the next phase of their automotive training. Pick your part.",
+      "Give, partner, volunteer or sponsor an event. Seventeen women in Ghana are ready for the next phase of their automotive training. Pick your part.",
   },
   intro: {
     eyebrow: "Get involved",
-    title: "Nineteen women are ready for the next phase. Pick your part.",
+    title: "Seventeen women are ready for the next phase. Pick your part.",
     description:
       "Some people fund a trainee. Some open a workshop door. Some teach on a Saturday. Whatever you have, there is a way to use it here.",
     jumpLabel: "Ways to get involved",
@@ -107,7 +107,7 @@ export const GET_INVOLVED_OVERVIEW: GetInvolvedOverviewContent = {
   ],
   funding: {
     eyebrow: "What support funds right now",
-    title: "The 19 women need to finish what they started.",
+    title: "The 17 women need to finish what they started.",
     description:
       "WAJA is raising support to help them complete pilot training, move into incubation and prepare for long-term independence.",
     button: { label: "Fund a trainee", href: "/get-involved/give" },

@@ -61,18 +61,18 @@ export const IMPACT_PAGE: ImpactPageContent = {
   seo: {
     title: "Our Impact | WAJA",
     description:
-      "19 women, including 3 orphans, on one pathway to a new future. See how lives are changing and what WAJA's training centre will make possible.",
+      "17 women, including 3 orphans, on one pathway to a new future. See how lives are changing and what WAJA's training centre will make possible.",
   },
   hero: {
     eyebrow: "Our impact · As of [MONTH 2026]",
     lines: [
-      { figure: "19", text: " women." },
+      { figure: "17", text: " women." },
       { figure: "3", text: " orphans." },
       { text: "One pathway to a new future." },
     ],
     asideTitle: "Behind every number is a woman whose future is changing.",
     asideText:
-      "WAJA's current cohort includes 19 women, including 3 orphans, who are building skills, confidence, discipline and a new sense of possibility.",
+      "WAJA's current cohort includes 17 women, including 3 orphans, who are building skills, confidence, discipline and a new sense of possibility.",
     // TODO(WAJA): add the report file (e.g. /reports/impact-2026.pdf) to switch this link on
     report: { label: "Download the impact report" },
   },
@@ -125,7 +125,7 @@ export const IMPACT_PAGE: ImpactPageContent = {
         description:
           "Family obligations, health challenges and transport pressures meant some could not continue. Those who stayed kept advancing.",
         stats: [
-          { value: "19", label: "women still advancing" },
+          { value: "17", label: "women in training from 2025" },
           { value: "3", label: "orphans among them" },
         ],
       },
@@ -135,7 +135,7 @@ export const IMPACT_PAGE: ImpactPageContent = {
         title: "Finish the pilot. Open the centre.",
         description: "WAJA's goal this year is to complete pilot training and launch the warehouse-based training centre.",
         stats: [
-          { value: "19", label: "women completing pilot training" },
+          { value: "17", label: "women completing pilot training" },
           { value: "1", label: "warehouse secured, awaiting fit-out" },
         ],
       },
@@ -147,7 +147,7 @@ export const IMPACT_PAGE: ImpactPageContent = {
           "No new intake. WAJA will focus on fully developing the current cohort through incubation, mentorship, personal development and business readiness.",
         stats: [
           { value: "0", label: "new intake, by design" },
-          { value: "19", label: "women in incubation and business readiness" },
+          { value: "17", label: "women in incubation and business readiness" },
         ],
       },
       {
@@ -213,7 +213,7 @@ export const IMPACT_PAGE: ImpactPageContent = {
       "Laptops and tablets",
       "Safety equipment",
       "Service workflow training",
-      "Incubation support for the 19 women",
+      "Incubation support for the 17 women",
       "Diagnostic learning stations",
       "AI-supported repair learning tools",
       "Simulation training tools",
@@ -231,7 +231,7 @@ export const IMPACT_PAGE: ImpactPageContent = {
     button: { label: "Help equip the centre", href: "/get-involved/give#give-now" },
   },
   closing: {
-    title: "Nineteen women are most of the way there. Take them the rest.",
+    title: "Seventeen women are most of the way there. Take them the rest.",
     primary: { label: "Fund a trainee", href: "/get-involved/give#give-now" },
     secondary: { label: "Other ways to help", href: "/get-involved" },
   },
