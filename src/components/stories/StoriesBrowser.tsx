@@ -21,6 +21,7 @@ export default function StoriesBrowser({ stories, labels }: { stories: Story[]; 
   const nameRef = React.useRef<HTMLHeadingElement>(null);
   const story = stories.find((s) => s.id === activeId) ?? stories[0];
   if (!story) return null;
+  const wide = story.orientation === "landscape";
 
   const select = (id: string) => {
     setActiveId(id);
@@ -37,21 +38,24 @@ export default function StoriesBrowser({ stories, labels }: { stories: Story[]; 
         sx={{
           scrollMarginTop: "96px",
           display: "flex",
-          flexDirection: { xs: "column", sm: "row" },
-          gap: { xs: 3, sm: 5, md: 8 },
-          alignItems: { sm: "center" },
+          // Wide videos stack until desktop; upright ones sit beside the text from tablets up
+          flexDirection: wide ? { xs: "column", md: "row" } : { xs: "column", sm: "row" },
+          gap: { xs: 3, sm: 5, md: 6 },
+          alignItems: { md: "center" },
         }}
       >
         {/* Keyed so switching stories resets the player back to its poster */}
-        <VideoPlayer
-          key={story.id}
-          video={story.video}
-          poster={story.poster}
-          orientation={story.orientation}
-          title={`${story.name}: ${story.quote}`}
-          playLabel={labels.play.replace("{name}", story.name)}
-          comingSoonLabel={labels.comingSoon}
-        />
+        <Box sx={wide ? { width: "100%", flex: { md: "0 0 58%" }, minWidth: 0 } : { flexShrink: 0 }}>
+          <VideoPlayer
+            key={story.id}
+            video={story.video}
+            poster={story.poster}
+            orientation={story.orientation}
+            title={story.quote ? `${story.name}: ${story.quote}` : `${story.name}'s story`}
+            playLabel={labels.play.replace("{name}", story.name)}
+            comingSoonLabel={labels.comingSoon}
+          />
+        </Box>
 
         <Box sx={{ flex: 1, minWidth: 0 }} aria-live="polite">
           <Typography variant="overline" component="p" sx={{ color: wajaColors.accentDark, fontWeight: 600, letterSpacing: "0.12em", lineHeight: 1.5, mb: 1 }}>
@@ -68,24 +72,26 @@ export default function StoriesBrowser({ stories, labels }: { stories: Story[]; 
           <Typography variant="body2" sx={{ color: "text.secondary", mb: 3 }}>
             {story.role}
           </Typography>
-          <Typography
-            component="blockquote"
-            sx={{
-              m: 0,
-              mb: 3,
-              pl: 2.5,
-              borderLeft: `3px solid ${wajaColors.accent}`,
-              fontFamily: SERIF,
-              fontWeight: 300,
-              fontSize: { xs: "1.25rem", md: "1.5rem" },
-              lineHeight: 1.35,
-              color: wajaColors.foreground,
-            }}
-          >
-            “{story.quote}”
-          </Typography>
+          {story.quote && (
+            <Typography
+              component="blockquote"
+              sx={{
+                m: 0,
+                mb: 3,
+                pl: 2.5,
+                borderLeft: `3px solid ${wajaColors.accent}`,
+                ...typeScale.subTitle,
+                fontWeight: 500,
+                lineHeight: 1.4,
+                color: wajaColors.foreground,
+              }}
+            >
+              “{story.quote}”
+            </Typography>
+          )}
 
           {/* Transcript: lets people follow the story without playing the video */}
+          {story.transcript && story.transcript.length > 0 && (
           <Box
             component="details"
             sx={{
@@ -116,6 +122,7 @@ export default function StoriesBrowser({ stories, labels }: { stories: Story[]; 
               ))}
             </Box>
           </Box>
+          )}
         </Box>
       </Box>
 
@@ -134,7 +141,7 @@ export default function StoriesBrowser({ stories, labels }: { stories: Story[]; 
                 sx={{
                   width: "100%",
                   display: "grid",
-                  gridTemplateColumns: { xs: "64px 1fr", md: "72px 240px 1fr auto" },
+                  gridTemplateColumns: { xs: "96px 1fr", md: "128px 240px 1fr auto" },
                   columnGap: { xs: 2, md: 4 },
                   rowGap: 0.5,
                   alignItems: "center",
@@ -150,10 +157,15 @@ export default function StoriesBrowser({ stories, labels }: { stories: Story[]; 
               >
                 <MediaFrame
                   image={s.poster}
-                  sizes="72px"
+                  sizes="128px"
                   placeholderBg={wajaColors.muted}
                   placeholderColor={wajaColors.primaryDark}
-                  sx={{ width: { xs: 64, md: 72 }, aspectRatio: "3 / 4", gridRow: { xs: "span 2", md: "auto" }, "& .MuiTypography-root": { fontSize: "0.55rem" } }}
+                  sx={{
+                    width: { xs: 96, md: 128 },
+                    aspectRatio: s.orientation === "portrait" ? "3 / 4" : "16 / 9",
+                    gridRow: { xs: s.quote ? "span 2" : "auto", md: "auto" },
+                    "& .MuiTypography-root": { fontSize: "0.55rem" },
+                  }}
                 />
                 <Box>
                   <Typography component="span" sx={{ display: "block", fontFamily: SERIF, fontSize: "1.2rem", lineHeight: 1.2, color: wajaColors.foreground }}>
@@ -163,8 +175,8 @@ export default function StoriesBrowser({ stories, labels }: { stories: Story[]; 
                     {s.role}
                   </Typography>
                 </Box>
-                <Typography component="span" variant="body2" sx={{ color: wajaColors.foreground, gridColumn: { xs: "2", md: "auto" } }}>
-                  “{s.quote}”
+                <Typography component="span" variant="body2" sx={{ color: wajaColors.foreground, gridColumn: { xs: "2", md: "auto" }, display: s.quote ? "block" : { xs: "none", md: "block" } }}>
+                  {s.quote ? `“${s.quote}”` : ""}
                 </Typography>
                 <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 0.75, color: wajaColors.primaryDark, fontWeight: 600, fontSize: "0.85rem", whiteSpace: "nowrap" }}>
                   <PlayArrowRoundedIcon aria-hidden sx={{ fontSize: 20, color: wajaColors.accent }} />

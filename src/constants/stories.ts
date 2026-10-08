@@ -1,3 +1,4 @@
+import { cloudinaryPoster, cloudinaryVideo } from "@/lib/cloudinary";
 import type { CtaLink, ImageContent, VideoContent } from "./types";
 
 // Leave a story's `video` out until it's hosted: a placeholder shows instead
@@ -7,14 +8,15 @@ export type Story = {
   id: string;
   name: string;
   role: string;
-  quote: string;
+  // Optional: a short line from the video. Hidden until added.
+  quote?: string;
   // e.g. "0:48"
   duration: string;
-  // Phone videos are usually portrait
   orientation: "portrait" | "landscape";
   poster: ImageContent;
   video?: StoryVideo;
-  transcript: string[];
+  // Optional: one string per paragraph. The "Read the transcript" toggle shows only when present.
+  transcript?: string[];
   // Only stories with recorded consent (and guardian consent where needed) are shown
   consentConfirmed: boolean;
 };
@@ -61,17 +63,25 @@ export const STORIES_PAGE: StoriesPageContent = {
   },
 };
 
-// TODO(WAJA): replace the six placeholders with the real stories once the videos are hosted
-const placeholder = (n: number): Story => ({
-  id: `story-${n}`,
-  name: `[Name ${n}]`,
-  role: "[Program · Cohort]",
-  quote: "[A short line from the video that captures her story.]",
-  duration: "0:45",
-  orientation: "portrait",
-  poster: { alt: `Photo: still from story ${n}` },
-  transcript: ["[Transcript of the video, taken from the corrected captions.]"],
+// Builds a story from its Cloudinary video. `poster` is the second of the video used as its thumbnail.
+const story = (id: string, name: string, path: string, duration: string, poster = 3): Story => ({
+  id,
+  name,
+  role: "WAJA trainee",
+  duration,
+  orientation: "landscape",
+  video: { url: cloudinaryVideo(path) },
+  poster: { src: cloudinaryPoster(path, poster), alt: `${name} speaking in her WAJA story video` },
+  // TODO(WAJA): confirm consent is recorded for each woman before launch
   consentConfirmed: true,
 });
 
-export const STORIES: Story[] = [1, 2, 3, 4, 5, 6].map(placeholder);
+// TODO(WAJA): add each woman's `quote` (a line from her video) and `transcript` when available
+export const STORIES: Story[] = [
+  story("zebby", "Zebby", "v1791475978/Zebby", "0:51"),
+  story("chinenye-iwueze", "Chinenye Iwueze", "v1791475978/Chinenye_Iwueze", "0:39"),
+  story("hilda-clement", "Hilda Clement", "v1791475963/Hilda_Clement", "0:42"),
+  story("vera-gajah", "Vera Gajah", "v1791475953/Vera_Gajah", "0:33", 15),
+  story("jennifer-figilo", "Jennifer Figilo", "v1791475935/Jennifer_Figilo", "0:35"),
+  story("stephanie", "Stephanie", "v1791475912/Stephanie", "0:35"),
+];

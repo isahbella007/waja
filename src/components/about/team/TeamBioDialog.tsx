@@ -54,6 +54,25 @@ export default function TeamBioDialog({ member, onClose }: { member: TeamMember 
               <Typography variant="body2" sx={{ color: wajaColors.accent, fontWeight: 600 }}>
                 {shown.role}
               </Typography>
+              {shown.email && (
+                <Typography
+                  component="a"
+                  href={`mailto:${shown.email}`}
+                  variant="body2"
+                  sx={{
+                    display: "inline-block",
+                    mt: 0.25,
+                    color: wajaColors.primaryDark,
+                    fontWeight: 600,
+                    textDecoration: "none",
+                    borderRadius: "4px",
+                    "&:hover": { textDecoration: "underline" },
+                    "&:focus-visible": { outline: "3px solid", outlineColor: wajaColors.primary, outlineOffset: 2 },
+                  }}
+                >
+                  {shown.email}
+                </Typography>
+              )}
             </div>
             <IconButton aria-label="Close bio" onClick={onClose} sx={{ position: "absolute", right: 8, top: 8 }}>
               <CloseIcon />

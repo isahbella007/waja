@@ -1,3 +1,4 @@
+import { cloudinaryPoster, cloudinaryVideo } from "@/lib/cloudinary";
 import type { CtaLink, ImageContent, SectionHeading, VideoContent } from "../types";
 
 export type HistoryContent = {
@@ -42,8 +43,11 @@ export const HISTORY: HistoryContent = {
     eyebrow: "The film",
     title: "The Jeep that started it all.",
     caption: "The story of the roadside repair, and the Jeep at the centre of it.",
-    // TODO(WAJA): add `video: { url: "…" }` once the Jeep video is hosted (YouTube or Cloudinary)
-    poster: { alt: "Still from the film about the original WAJA Jeep" },
+    video: { url: cloudinaryVideo("v1791475862/jeep_that_started_everything") },
+    poster: {
+      src: cloudinaryPoster("v1791475862/jeep_that_started_everything", 3),
+      alt: "Men digging the original WAJA Jeep out of a muddy roadside track",
+    },
     orientation: "landscape",
     playLabel: "Play the film about the Jeep that started WAJA",
     comingSoon: "Film coming soon",
