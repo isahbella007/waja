@@ -13,6 +13,8 @@ import Box from "@mui/material/Box";
 import { ArrowForward } from "@mui/icons-material";
 import SectionContainer from "./SectionContainer";
 import { wajaColors } from "@/theme/theme";
+import { buildDonateHref } from "@/constants/getInvolved/give";
+import { APPLY_HREF } from "@/constants/navigation";
 
 const WAYS_TO_HELP = [
   {
@@ -20,28 +22,28 @@ const WAYS_TO_HELP = [
     description: "Join our next cohort and train for a career in automotive technology.",
     descriptionShort: "Join our next cohort",
     cta: "Apply now",
-    href: "#apply",
+    href: APPLY_HREF ?? "/apply",
   },
   {
     title: "Partner",
     description: "Work with us as a company, school or foundation to expand opportunity.",
     descriptionShort: "Companies, schools and foundations",
     cta: "Partner with us",
-    href: "#partner",
+    href: "/about/contact?topic=partner",
   },
   {
     title: "Volunteer",
     description: "Share your skills as a mentor, trainer or advisor.",
     descriptionShort: "Mentor, train or advise",
     cta: "Volunteer",
-    href: "#volunteer",
+    href: "/get-involved/volunteer",
   },
   {
     title: "Give in kind",
     description: "Donate tools, equipment or vehicles for training.",
     descriptionShort: "Tools, equipment or vehicles",
     cta: "Give equipment",
-    href: "#give-in-kind",
+    href: "/get-involved/give/in-kind",
   },
 ];
 
@@ -73,6 +75,11 @@ export default function GetInvolved() {
 
   const displayAmount = amount === "other" ? customAmount || "0" : amount;
   const donateLabel = `Donate $${displayAmount}${frequency === "monthly" ? " monthly" : ""}`;
+  // Opens WAJA's Bloomerang form with this amount and frequency filled in. These amounts
+  // aren't preset buttons on that form, so they go into its "Other amount" box.
+  const donateValue = Number(displayAmount);
+  const donateHref =
+    donateValue > 0 ? buildDonateHref(donateValue, frequency === "monthly" ? "monthly" : "once", true) : undefined;
 
   return (
     <SectionContainer id="get-involved" pb={{ xs: 4, md: 4 }}>
@@ -244,6 +251,9 @@ export default function GetInvolved() {
             <Button
               fullWidth
               variant="contained"
+              href={donateHref}
+              // No amount typed into "Other" yet: nothing to donate
+              disabled={!donateHref}
               sx={{
                 bgcolor: "warning.main",
                 fontSize: "1rem",
