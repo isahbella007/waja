@@ -251,7 +251,7 @@ export const GIVE_PAGE: GivePageContent = {
       {
         title: "Corporate & grant partner",
         description: "Align your brand with empowerment, or support structured, measurable workforce development.",
-        href: "/get-involved/partner",
+        href: "/about/contact?topic=partner",
       },
     ],
   },

@@ -14,10 +14,10 @@ export type GraduateStoryContent = {
 // TODO(WAJA): fill in her name, her own words and her year (owner to provide)
 export const GRADUATE_STORY: GraduateStoryContent = {
   eyebrow: "Graduate Story",
-  quote: "[A short quote in her own words about what the training changed for her.]",
-  name: "[Name]",
-  role: "Automotive Technology Graduate",
-  cohort: "Class of [Year]",
+  quote: "When I first picked up a wrench, I didn't know what I was capable of. WAJA taught me more than how to fix engines. It taught me to believe in myself. Today I'm not just a mechanic, I'm proof that a woman's place is wherever she chooses to build her future.",
+  name: "Zebby",
+  role: "WAJA Graduate",
+  cohort: "Class of 2026",
   image: {
     src: "/students/trainee.jpg",
     alt: "A WAJA trainee in blue overalls carrying a toolbox and a diagnostic tool past cars in the workshop yard",

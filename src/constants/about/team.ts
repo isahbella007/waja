@@ -73,8 +73,11 @@ export const TEAM: TeamContent = {
         id: "ben",
         name: "Ben",
         role: "Founder",
-        summary: "[Two lines on his background and what he does at WAJA.]",
-        bio: ["[Full bio paragraph one.]", "[Full bio paragraph two.]"],
+        summary: "Founded WAJA on a simple belief: when women gain skills, entire communities rise. 15+ years in international development, global business and military service.",
+        bio: [
+          "Ben founded WAJA on a simple belief: when women gain skills, entire communities rise. With more than 15 years leading teams in international development, global business and military service, he has built a career on turning vision into lasting results.",
+          "His years working in Ghana gave him a deep respect for its people and a clear sense of what's possible. Today, Ben leads WAJA with conviction and purpose, opening doors for women to build skilled careers and confident futures.",
+        ],
         image: { src: "/team/ben_founder.png", alt: "Ben, founder of WAJA, smiling", position: "center 75%" },
       },
       {
@@ -91,14 +94,15 @@ export const TEAM: TeamContent = {
       },
       {
         id: "abigail",
-        name: "Abigail Owusu",
+        name: "Abigail Rabbi",
         role: "COO",
+        email: "Abigail.rabbi@gowaja.org",
         summary: "A Ghanaian leader in women's empowerment who leads WAJA's day-to-day operations as the garage network and training grow.",
         bio: [
           "Abigail brings years of leadership in women's empowerment, with a track record of opening doors and building opportunity for women. As a Ghanaian, she knows the communities we serve firsthand and understands both the challenges and the promise ahead.",
           "Abigail is a brilliant strategist and an eloquent voice for change. She will lead WAJA's day-to-day operations as we grow our garage network and expand vocational training that prepares women for skilled, well-paid careers. We're excited to have her guide the next chapter of our mission.",
         ],
-        image: { alt: "Photo: Abigail Owusu" },
+        image: {src: "/team/Abigail.jpg", alt: "Photo: Abigail Rabbi" },
       },
       {
         id: "gerard",

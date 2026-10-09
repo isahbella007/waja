@@ -11,8 +11,13 @@ export type InvolvementWay = {
 
 export type Supporter = {
   name: string;
-  // Leave src empty to show a placeholder box
+  // Small label above the name, e.g. "Industry partner"
+  category: string;
   logo: ImageContent;
+  // Optional: one line on how they support WAJA. Hidden until added.
+  support?: string;
+  // Optional: the partner's website
+  website?: string;
 };
 
 export type GetInvolvedOverviewContent = {
@@ -30,6 +35,7 @@ export type GetInvolvedOverviewContent = {
   supporters: {
     eyebrow: string;
     title: string;
+    description: string;
     link: CtaLink;
     list: Supporter[];
     note: string;
@@ -127,14 +133,27 @@ export const GET_INVOLVED_OVERVIEW: GetInvolvedOverviewContent = {
   supporters: {
     eyebrow: "Who already backs this",
     title: "You would be in good company.",
-    link: { label: "Become a partner", href: "/get-involved/partner" },
+    description: "These organisations stand behind the women of WAJA. Thank you.",
+    link: { label: "Become a partner", href: "/about/contact?topic=partner" },
+    // TODO(WAJA): add a `support` line for each (how they help WAJA) and `website` if wanted
     list: [
-      { name: "[PARTNER]", logo: { alt: "[PARTNER LOGO]" } },
-      { name: "[PARTNER]", logo: { alt: "[PARTNER LOGO]" } },
-      { name: "[PARTNER]", logo: { alt: "[PARTNER LOGO]" } },
-      { name: "[PARTNER]", logo: { alt: "[PARTNER LOGO]" } },
+      {
+        name: "Nick TC-Scan Ltd.",
+        category: "Industry partner",
+        logo: { src: "/partners/partner_1.jpeg", alt: "Nick TC-Scan Ltd. (NTCS) logo" },
+      },
+      {
+        name: "Carbon Cleaning Ghana",
+        category: "Industry partner",
+        logo: { src: "/partners/partner_3.jpeg", alt: "Carbon Cleaning Ghana logo" },
+      },
+      {
+        name: "Woodstock Christian Church",
+        category: "Faith partner",
+        logo: { src: "/partners/partner_2.jpeg", alt: "Woodstock Christian Church logo" },
+      },
     ],
-    note: "Supporters are named only with their permission. [NUMBER] individuals give to WAJA.",
+    note: "Partners are named with their permission.",
   },
   ask: {
     title: "Not sure where you fit? Just ask.",

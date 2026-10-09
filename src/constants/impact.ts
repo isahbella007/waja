@@ -64,7 +64,7 @@ export const IMPACT_PAGE: ImpactPageContent = {
       "17 women, including 3 orphans, on one pathway to a new future. See how lives are changing and what WAJA's training centre will make possible.",
   },
   hero: {
-    eyebrow: "Our impact · As of [MONTH 2026]",
+    eyebrow: "Our impact · As of 2025",
     lines: [
       { figure: "17", text: " women." },
       { figure: "3", text: " orphans." },
@@ -227,7 +227,7 @@ export const IMPACT_PAGE: ImpactPageContent = {
     description:
       "They need a structured environment where they can learn consistently, safely and with the tools required for the future of automotive service. The centre lets WAJA control curriculum, improve training quality, expand technology access and prepare women for real economic opportunity.",
     // TODO(WAJA): replace with the real fit-out target and amount raised, or delete `funding` to hide the bar
-    funding: { raised: "$2500", goalText: "raised of $242,500 needed to fit out the centre", percentLabel: "1%", percent: 1 },
+    funding: { raised: "$12,934", goalText: "raised of $650,000 needed to fit out the centre", percentLabel: "1%", percent: 1 },
     button: { label: "Help equip the centre", href: "/get-involved/give#give-now" },
   },
   closing: {
