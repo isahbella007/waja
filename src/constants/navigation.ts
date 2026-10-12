@@ -34,7 +34,7 @@ export const GET_INVOLVED_NAV: NavItem = {
     { label: "Give", href: "/get-involved/give" },
     // { label: "Partner with us", href: "/get-involved/partner" },
     { label: "Volunteer", href: "/get-involved/volunteer" },
-    // { label: "Events & sponsorship", href: "/get-involved/events" },
+    { label: "Events", href: "/get-involved/events" },
   ],
 };
 

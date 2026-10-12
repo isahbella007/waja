@@ -1,5 +1,5 @@
-// Links to WAJA's videos on Cloudinary. Content stores just the video's path
-// (e.g. "v1791475978/Zebby", the part after /upload/ without ".mp4").
+// Links to WAJA's videos and images on Cloudinary. Content stores just the file's path
+// (e.g. "v1791475978/Zebby", the part after /upload/ without the extension).
 
 export const CLOUDINARY_CLOUD = "nskvxiwi";
 const BASE = `https://res.cloudinary.com/${CLOUDINARY_CLOUD}/video/upload`;
@@ -13,4 +13,9 @@ export function cloudinaryVideo(path: string) {
 // A still from the video to use as its thumbnail, taken `atSecond` seconds in
 export function cloudinaryPoster(path: string, atSecond = 3) {
   return `${BASE}/so_${atSecond},w_1280,c_limit,q_auto/${path}.jpg`;
+}
+
+// A photo stored on Cloudinary (the site resizes it further for each screen)
+export function cloudinaryImage(path: string) {
+  return `https://res.cloudinary.com/${CLOUDINARY_CLOUD}/image/upload/${path}.jpg`;
 }
