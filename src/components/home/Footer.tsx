@@ -13,6 +13,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import XIcon from "@mui/icons-material/X";
 import CandidSeal from "@/components/shared/CandidSeal";
+import { WAJA_FULL_NAME } from "@/constants/home/hero";
 
 const SOCIALS = [
   { icon: FacebookIcon, label: "WAJA on Facebook", href: "#" },
@@ -78,8 +79,11 @@ export default function Footer() {
       <Container maxWidth="lg">
         <Grid container spacing={6}>
           <Grid size={{ xs: 12, md: 3 }}>
-            <Typography variant="h5" sx={{ fontWeight: 700, color: "#FFFFFF", mb: 2 }}>
+            <Typography variant="h5" sx={{ fontWeight: 700, color: "#FFFFFF", mb: 0.5 }}>
               WAJA
+            </Typography>
+            <Typography variant="body2" sx={{ color: "#FDBA74", fontWeight: 600, mb: 2 }}>
+              {WAJA_FULL_NAME}
             </Typography>
             <Typography variant="body2" sx={{ mb: 3, maxWidth: 320 }}>
               Automotive and business training for women in Ghana.

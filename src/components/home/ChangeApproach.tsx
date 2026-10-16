@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
@@ -27,7 +28,7 @@ export default function ChangeApproach() {
             Why WAJA Exists
           </Typography>
           <Typography component="h2" variant="h4" sx={{ fontWeight: 700, mt: 1, mb: 2 }}>
-            Cars are changing fast. Women shouldn't be left behind
+            Cars are changing fast. Women shouldn&apos;t be left behind
           </Typography>
           <Typography variant="body1" color="text.secondary">
             Many women and orphans in Ghana face barriers to stable income, technical
@@ -40,12 +41,14 @@ export default function ChangeApproach() {
             automotive industry while helping strengthen Ghana&apos;s future service
             infrastructure.
           </Typography> */}
-          <Stack direction="row" spacing={1} sx={{ alignItems: "center", mt: 2 }}>
-            <Typography variant="body1" sx={{ fontWeight: 600, color: "primary.dark", mb: -0.5 }}>
-              Read our story
-            </Typography>
-            <ArrowForward sx={{ mb: -0.5, color: "primary.dark" }} />
-          </Stack>
+          <Link href="/about/mission-vision" style={{ display: "inline-block", textDecoration: "none" }}>
+            <Stack direction="row" spacing={1} sx={{ alignItems: "center", mt: 2, "&:hover p": { textDecoration: "underline" } }}>
+              <Typography variant="body1" sx={{ fontWeight: 600, color: "primary.dark", mb: -0.5 }}>
+                Read our story
+              </Typography>
+              <ArrowForward sx={{ mb: -0.5, color: "primary.dark" }} />
+            </Stack>
+          </Link>
         </Grid>
         <Grid size={{ xs: 12, md: 7 }}>
           <Box>

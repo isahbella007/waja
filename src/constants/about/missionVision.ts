@@ -24,7 +24,7 @@ export const MISSION_VISION: MissionVisionContent = {
     eyebrow: "About WAJA",
     title: "Why we exist, and where we're going.",
     description:
-      "WAJA stands for West Africa Jeep Adventures for Women and Orphans. We train women and orphans in Ghana for real work in a changing automotive industry.",
+      "WAJA stands for West Africa Journey-Woman Adventures. We train women and orphans in Ghana for real work in a changing automotive industry.",
     image: { src: "/students/student_teacher.jpg", alt: "A WAJA trainee working carefully on a car engine", position: "center 30%" },
   },
   mission: {

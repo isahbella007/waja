@@ -152,3 +152,15 @@ html {
     animation: none;
   }
 }
+
+/* Home hero: each row of the W-A-J-A name rises into place in turn */
+@keyframes waja-name-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

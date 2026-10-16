@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Source_Sans_3 } from "next/font/google";
 import ThemeRegistry from "@/theme/ThemeRegistry";
+import { WAJA_FULL_NAME } from "@/constants/home/hero";
 import "./globals.css";
 
 // Variable font: full weight range plus optical size, so large display
@@ -18,9 +19,9 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "WAJA",
+  title: `WAJA · ${WAJA_FULL_NAME}`,
   description:
-    "WAJA empowers women and orphans in Ghana through automotive technology training, digital diagnostics, EV readiness, and entrepreneurship.",
+    `WAJA (${WAJA_FULL_NAME}) empowers women and orphans in Ghana through automotive technology training, digital diagnostics, EV readiness, and entrepreneurship.`,
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

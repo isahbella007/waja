@@ -44,7 +44,7 @@ export const APPLY_PAGE: ApplyPageContent = {
     eyebrow: "Apply",
     title: "Apply to train with WAJA.",
     description:
-      "WAJA for Women and Orphans provides hands-on automotive training, mentorship and professional development for women and orphans in Ghana.",
+      "WAJA (West Africa Journey-Woman Adventures) provides hands-on automotive training, mentorship and professional development for women and orphans in Ghana.",
     badges: ["Free to apply", "No experience needed", "Someone can apply for you"],
     primaryAction: { label: "Start your application", href: APPLY_FORM_HREF },
     secondaryAction: { label: "Ways to apply", href: "#ways-to-apply" },
