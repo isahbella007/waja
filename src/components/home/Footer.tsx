@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -14,6 +15,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import XIcon from "@mui/icons-material/X";
 import CandidSeal from "@/components/shared/CandidSeal";
 import { WAJA_FULL_NAME } from "@/constants/home/hero";
+import { WAJA_LOGO } from "@/constants/brand";
 
 const SOCIALS = [
   { icon: FacebookIcon, label: "WAJA on Facebook", href: "#" },
@@ -79,12 +81,22 @@ export default function Footer() {
       <Container maxWidth="lg">
         <Grid container spacing={6}>
           <Grid size={{ xs: 12, md: 3 }}>
-            <Typography variant="h5" sx={{ fontWeight: 700, color: "#FFFFFF", mb: 0.5 }}>
-              WAJA
-            </Typography>
-            <Typography variant="body2" sx={{ color: "#FDBA74", fontWeight: 600, mb: 2 }}>
-              {WAJA_FULL_NAME}
-            </Typography>
+            <Stack direction="row" spacing={1.5} sx={{ alignItems: "center", mb: 2 }}>
+              <Image src={WAJA_LOGO.src} alt="" width={WAJA_LOGO.width} height={WAJA_LOGO.height} style={{ height: 64, width: "auto" }} />
+              {/* The shield already reads WAJA, so only the full name sits beside it */}
+              <Typography
+                sx={{
+                  fontFamily: "var(--font-heading), Georgia, serif",
+                  fontWeight: 600,
+                  fontSize: "1.1rem",
+                  lineHeight: 1.3,
+                  color: "#FFFFFF",
+                  textWrap: "balance",
+                }}
+              >
+                {WAJA_FULL_NAME}
+              </Typography>
+            </Stack>
             <Typography variant="body2" sx={{ mb: 3, maxWidth: 320 }}>
               Automotive and business training for women in Ghana.
             </Typography>

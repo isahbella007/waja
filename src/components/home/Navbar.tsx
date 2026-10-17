@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import AppBar from "@mui/material/AppBar";
@@ -18,6 +19,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { DONATE_LINK, NAV_LINKS } from "@/constants/navigation";
+import { WAJA_LOGO } from "@/constants/brand";
 
 function isActive(pathname: string, href: string) {
   // Home-page anchors ("/#programs") are never "active" pages
@@ -58,20 +60,24 @@ export default function Navbar() {
       >
         <Container maxWidth="lg">
           <Toolbar disableGutters sx={{ py: 1, gap: 2 }}>
-            <Typography
+            <Box
               component={Link}
               href="/"
-              variant="h5"
-              sx={{
-                fontWeight: 700,
-                color: "primary.main",
-                flexGrow: 1,
-                textDecoration: "none",
-                cursor: "pointer",
-              }}
+              aria-label="WAJA home"
+              sx={{ display: "flex", alignItems: "center", gap: 1.25, flexGrow: 1, textDecoration: "none" }}
             >
-              WAJA
-            </Typography>
+              <Image
+                src={WAJA_LOGO.src}
+                alt=""
+                width={WAJA_LOGO.width}
+                height={WAJA_LOGO.height}
+                priority
+                style={{ height: 44, width: "auto" }}
+              />
+              <Typography component="span" variant="h5" sx={{ fontWeight: 700, color: "primary.main" }}>
+                WAJA
+              </Typography>
+            </Box>
 
             <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 3 }}>
               {NAV_LINKS.map((link) => {
