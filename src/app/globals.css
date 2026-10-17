@@ -153,14 +153,16 @@ html {
   }
 }
 
-/* Home hero: each row of the W-A-J-A name rises into place in turn */
-@keyframes waja-name-rise {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
+/* Home hero letter boxes: a glow passes from box to box until someone hovers one */
+@keyframes waja-box-call {
+  0%,
+  18%,
+  100% {
+    border-color: rgba(165, 243, 252, 0.3);
     transform: none;
+  }
+  8% {
+    border-color: rgba(234, 88, 12, 0.9);
+    transform: translateY(-4px);
   }
 }

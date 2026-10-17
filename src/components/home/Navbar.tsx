@@ -20,6 +20,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { DONATE_LINK, NAV_LINKS } from "@/constants/navigation";
 import { WAJA_LOGO } from "@/constants/brand";
+import { WAJA_FULL_NAME } from "@/constants/home/hero";
 
 function isActive(pathname: string, href: string) {
   // Home-page anchors ("/#programs") are never "active" pages
@@ -74,9 +75,17 @@ export default function Navbar() {
                 priority
                 style={{ height: 44, width: "auto" }}
               />
-              <Typography component="span" variant="h5" sx={{ fontWeight: 700, color: "primary.main" }}>
-                WAJA
-              </Typography>
+              <Box component="span" sx={{ display: "flex", flexDirection: "column" }}>
+                <Typography component="span" variant="h5" sx={{ fontWeight: 700, color: "primary.main", lineHeight: 1.1 }}>
+                  WAJA
+                </Typography>
+                <Typography
+                  component="span"
+                  sx={{ display: "block", fontSize: "0.72rem", fontWeight: 600, color: "text.secondary", letterSpacing: "0.02em", mt: 0.25 }}
+                >
+                  {WAJA_FULL_NAME}
+                </Typography>
+              </Box>
             </Box>
 
             <Box sx={{ display: { xs: "none", md: "flex" }, alignItems: "center", gap: 3 }}>
